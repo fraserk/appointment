@@ -1,0 +1,109 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600|Poppins:500|Roboto:300);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://cdn.jsdelivr.net/sweetalert2/6.3.2/sweetalert2.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.1/fullcalendar.css);
+// Variables
+@import "variables";
+
+// Bootstrap
+// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/foundation-sites/scss/foundation.scss";
+//@import "node_modules/sweetalert2/dist/sweetalert2.css";
+
+@include foundation-everything(true);
+
+body{
+  font-family: 'Roboto', sans-serif;
+}
+.top-bar{
+  margin-bottom: 20px;
+}
+.menu.vertical{
+  padding: 0 5px;
+}
+.menu.vertical > li > a {
+
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 0.8em;
+  color: #4D545D;
+}
+.menu  li > a {
+
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 0.8em;
+  color: #4D545D;
+}
+.menu  li > a:hover {
+
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 0.8em;
+  color: #ddd;
+}
+.menu.vertical > li > a:hover{
+  background-color: whitesmoke;
+  color: #00d1b2;
+  border-radius: 2px;
+}
+
+.sidebarHeader{
+    padding: 0.5rem;
+    font-family: 'Raleway';
+    background: #798ca7;
+    display: flex;
+    align-items: center;
+    height: 51px;
+    color: #ddd;
+    margin-bottom: 5px;
+}
+
+.is-Header{
+  font-size: 1.0em;
+  font-family: 'Poppins', sans-serif;
+}
+h3{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 1.4em;
+  color: #4D545D;
+}
+
+.button.is-link {
+    background-color: transparent;
+    border-color: transparent;
+    color: #4a4a4a;
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse;
+}
+thead {
+    /* background: #ddd; */
+    color: #0a0a0a;
+    border-bottom: 5px solid #ddd;
+}
+.card{
+  border-radius: 2px;
+  border: 0px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+}
+.card-section{
+  background: #fff;
+  .button{
+    margin: 0;
+  }
+}
+.is-underline{
+  border-bottom: 1px solid #f9f2f2;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    input{
+      margin-bottom: 0;
+      padding-bottom: 0px
+   }
+}
