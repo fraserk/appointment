@@ -25,11 +25,11 @@ class bookingController extends Controller
     }
     public function show(Service $service)
     {
-        $start = new \DateTime('10:00');
-        $end = new \Datetime('13:59');
+        $start = new \DateTime('09:00');
+        $end =   new \DateTime('17:00');
+
         $interval = new \DateInterval('PT30M');
-        $occurance = '5';
-        $period = new \DatePeriod($start, $interval, $occurance);
+        $period = new \DatePeriod($start, $interval, $end);
 
 
         return View('services.show', compact('service', 'period'));

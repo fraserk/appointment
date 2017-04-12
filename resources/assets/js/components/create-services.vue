@@ -23,7 +23,7 @@
             <div class="large-4 column">
               <label for="">
                 Service Price
-                <input type="text" name="" value="">
+                <input type="text" v-model="price">
 
               </label>
             </div>
@@ -31,7 +31,7 @@
               <label for="">
                 <label for="">
                   SERVICE DURATION
-                  <input type="text" name="" value="">
+                  <input type="text" v-model="duration">
                 </label>
               </label>
             </div>
@@ -80,6 +80,8 @@
         return{
           revealLabel:'',
           name: '',
+          price: '',
+          duration:'',
           service: '',
           editForm: false,
           createForm: false,

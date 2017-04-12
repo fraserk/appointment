@@ -1,5 +1,7 @@
 <?php
 use App\Service;
+use App\Company;
+use  App\Hour;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -13,24 +15,11 @@ class serviceTimeslotTest extends TestCase
      */
     public function it_create_service_timeslot()
     {
+        $company   = factory(Company::class)->create();
+        $hours = factory(Hour::class)->create(['company_id'=>$company->id]);
+
         $service = factory(Service::class)->create();
-        $service->addTimeSlot();
-        $this->assertEquals('1', $service->timeslots()->count());
-    }
-
-    /**
-     * @test
-     */
-    public function lets_play()
-    {
-        $start = new DateTime();
-        $end = new Datetime('Tomorrow');
-        $interval = new DateInterval('PT5M');
-        $occurance = '5';
-        $period = new DatePeriod($start, $interval, $end);
-
-        foreach ($period as $dt) {
-            return $dt->format('H:i:s') .'\n';
-        }
+        $service->addTimeSlot($company);
+        $this->assertNotEmpty($service->timeslots);
     }
 }

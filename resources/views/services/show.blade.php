@@ -24,10 +24,11 @@
       <div class="small-10 columns">
         <h5>Available Appointment</h5>
         <hr>
-        <div id='calendar'></div>
+        <a href="#">4/10/2015</a> |
+        <a href="#">4/11/2015</a> |
         <ul>
           @foreach ($period as $dt)
-            <li>{{ $dt->format('H:i:s A') }}</li>
+            <li>{{ $dt->format('M D d Y H:i A') }}</li>
           @endforeach
 
         </ul>

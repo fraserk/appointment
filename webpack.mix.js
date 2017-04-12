@@ -11,7 +11,7 @@ const { mix } = require('laravel-mix');
  |
  */
  mix.autoload({});
- mix.js(['resources/assets/js/app.js','node_modules/foundation-sites/dist/js/foundation.min.js','node_modules/fullcalendar/dist/fullcalendar.js'], 'public/js')
+ mix.js(['resources/assets/js/app.js','node_modules/foundation-sites/dist/js/foundation.min.js'], 'public/js')
   .sass('resources/assets/sass/app.scss', 'public/css');
  mix.browserSync({
     proxy: 'appointment.dev'

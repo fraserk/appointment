@@ -16,6 +16,7 @@ class CreateSlotsTable extends Migration
         Schema::create('slots', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('service_id');
+            $table->datetime('period');
             $table->timestamps();
         });
     }

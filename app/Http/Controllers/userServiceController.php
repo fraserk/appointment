@@ -20,7 +20,7 @@ class userServiceController extends Controller
 
     public function store()
     {
-        $user = request()->user()->addService(request()->only(['name']));
+        $user = request()->user()->addService(request()->only(['name','price','duration']));
         return response('created', 201);
     }
 

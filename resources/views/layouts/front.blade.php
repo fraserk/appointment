@@ -13,7 +13,7 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <!-- import CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.1/fullcalendar.min.css">
     <!-- import JavaScript -->
     <!-- Scripts -->
     <script>
@@ -28,7 +28,7 @@
 
     </div>
     <script src="/js/app.js"></script>
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.1/fullcalendar.min.js"></script>
     <script>
       $(document).foundation();
     </script>

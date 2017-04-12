@@ -30,9 +30,23 @@ class Service extends Model
     {
         return $this->hasMany(Slot::class);
     }
-
-    public function addTimeSlot()
+    public function company()
     {
-        return $this->timeslots()->create([]);
+        return  $this->belongsTo(Company::class);
+    }
+
+    public function addTimeSlot($company)
+    {
+        //return ;
+      foreach ($company->hours as $hour) {
+          $start = new \DateTime($hour->day_of_week .$hour->open_time);
+          $end = new \Datetime($hour->day_of_week .$hour->close_time);
+          $interval = new \DateInterval('PT30M');
+          $period = new \DatePeriod($start, $interval, $end);
+
+          foreach ($period as $dt) {
+              $this->timeslots()->create(['period'=>$dt]);
+          }
+      }
     }
 }
