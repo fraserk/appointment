@@ -37,7 +37,8 @@ class User extends Authenticatable
 
     public function addService($request)
     {
-        return $this->service()->create($request);
+        $service = $this->service()->create($request);
+        $service->addTimeSlot(auth()->user()->company);
     }
 
     public function addCompany($request)

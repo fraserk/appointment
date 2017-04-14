@@ -24,11 +24,13 @@
       <div class="small-10 columns">
         <h5>Available Appointment</h5>
         <hr>
-        <a href="#">4/10/2015</a> |
-        <a href="#">4/11/2015</a> |
+        <appointmentcalendar>
+        </appointmentcalendar>
+
+        </div>
         <ul>
           @foreach ($period as $dt)
-            <li>{{ $dt->format('M D d Y H:i A') }}</li>
+            <li>{{ $dt->period->format('M D d Y H:i A') }}</li>
           @endforeach
 
         </ul>
@@ -46,7 +48,7 @@
         // page is now ready, initialize the calendar...
 
         $('#calendar').fullCalendar({
-            // put your options and callbacks here
+            aspectRatio: 2
         })
 
       });

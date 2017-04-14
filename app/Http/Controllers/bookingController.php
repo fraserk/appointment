@@ -25,13 +25,7 @@ class bookingController extends Controller
     }
     public function show(Service $service)
     {
-        $start = new \DateTime('09:00');
-        $end =   new \DateTime('17:00');
-
-        $interval = new \DateInterval('PT30M');
-        $period = new \DatePeriod($start, $interval, $end);
-
-
+        $period = $service->timeslots()->whereDate('period', date('2017-04-14'))->get();
         return View('services.show', compact('service', 'period'));
     }
 }

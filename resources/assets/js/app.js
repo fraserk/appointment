@@ -18,6 +18,7 @@ Vue.component('createservices', require('./components/create-services.vue'));
 Vue.component('getservices', require('./components/get-services.vue'));
 Vue.component('company', require('./components/company.vue'));
 Vue.component('storehours', require('./components/store-hours.vue'));
+Vue.component('appointmentcalendar', require('./components/appointment-calendar.vue'));
 const app = new Vue({
     el: '#app'
 });
