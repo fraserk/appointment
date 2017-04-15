@@ -2,22 +2,15 @@
   <div class="calendar">
     <div class="row">
       <div class="column">
-        <div class="calendar-header">
-          <i class="fa fa-fw fa-chevron-left" @click="subtractMonth"></i>
-          <h4> </h4>
-          <i class="fa fa-fw fa-chevron-right" @click="addMonth"></i>
-
-
-
-        </div>
+        <a @click.prevent="subtractWeek"><i class="fa fa-fw fa-chevron-left" ></i></a>
       </div>
-    </div>
-    <div class="row">
       <div class="columns" v-for="n in 7">
-          {{fuck(n)}}
+          {{weeklyCalendar(n)}}
 
       </div>
-
+      <div class="column ">
+        <a href="#"  @click.prevent="addWeek"><i class="fa fa-fw fa-chevron-right"></i></a>
+      </div>
     </div>
     </div>
 </template>
@@ -33,78 +26,24 @@ export default {
     }
   },
   mounted() {
-    console.log(this.dateContext.add(1, 'days').format("MMMM Do,dddd"));
+
 
   },
   computed:{
-    year: function(){
-      var t =this;
-      return t.dateContext.format('Y');
-    },
-    month: function(){
-      var t = this;
-      return t.dateContext.format('MMMM');
-    },
-    daysInMonth (){
-      var t = this;
-      return t.dateContext.daysInMonth();
-    },
-    currentDate (){
-      var t= this;
-      return t.dateContext.get('date');
-    },
-    weekStart(){
-      var t =this;
-      return t.dateContext.startOf('week');
-    },
-    weekEnd(){
-      var t =this;
-      return t.dateContext.endOf('week');
-    },
-    currentWeek (){
-      var t = this;
-      return t.dateContext.get('week');
-    },
-    daysInWeek(){
-      var t = this;
-      return t.dateContext.weekday();
-    },
-    weekDayNumber(){
-      var t = this;
-      for (i = 0; i <=6; i++){
-        return  moment(weekStart).add(i, 'days').format("MMMM Do,dddd");
-      }
 
-    },
-    firstDayOfMonth (){
-      var t = this;
-      var firstDay = moment(t.dateContext).subtract((t.currentDate - 1), 'days');
-      return firstDay.weekday();
-    },
-    initialDate: function () {
-     var t = this;
-     return t.today.get('date');
- },
-   initialMonth: function () {
-       var t = this;
-       return t.today.format('MMMM');
-   },
-   initialYear: function () {
-       var t = this;
-       return t.today.format('Y');
-   }
  },
  methods: {
-    addMonth: function () {
-        var t = this;
-        t.dateContext = moment(t.dateContext).add(1, 'month');
+    addWeek: function () {
+
+        this.dateContext = moment(this.dateContext).add(1, 'week');
+        return this.weeklyCalendar();
       },
-      subtractMonth: function () {
-          var t = this;
-          t.dateContext = moment(t.dateContext).subtract(1, 'month');
+      subtractWeek: function () {
+        this.dateContext = moment(this.dateContext).subtract(1, 'week');
+        return this.weeklyCalendar();
       },
-      fuck: function(n){
-        return moment().startOf('week').add(n, 'days').format("MMMM Do,dddd");
+      weeklyCalendar: function(n){
+        return moment(this.dateContext).startOf('week').add(n, 'days').format("ddd M/DD/Y");
       }
   }
 }

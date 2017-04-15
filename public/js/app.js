@@ -17767,13 +17767,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -17783,79 +17776,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       days: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
     };
   },
-  mounted: function mounted() {
-    console.log(this.dateContext.add(1, 'days').format("MMMM Do,dddd"));
-  },
+  mounted: function mounted() {},
 
-  computed: {
-    year: function year() {
-      var t = this;
-      return t.dateContext.format('Y');
-    },
-    month: function month() {
-      var t = this;
-      return t.dateContext.format('MMMM');
-    },
-    daysInMonth: function daysInMonth() {
-      var t = this;
-      return t.dateContext.daysInMonth();
-    },
-    currentDate: function currentDate() {
-      var t = this;
-      return t.dateContext.get('date');
-    },
-    weekStart: function weekStart() {
-      var t = this;
-      return t.dateContext.startOf('week');
-    },
-    weekEnd: function weekEnd() {
-      var t = this;
-      return t.dateContext.endOf('week');
-    },
-    currentWeek: function currentWeek() {
-      var t = this;
-      return t.dateContext.get('week');
-    },
-    daysInWeek: function daysInWeek() {
-      var t = this;
-      return t.dateContext.weekday();
-    },
-    weekDayNumber: function weekDayNumber() {
-      var t = this;
-      for (i = 0; i <= 6; i++) {
-        return moment(weekStart).add(i, 'days').format("MMMM Do,dddd");
-      }
-    },
-    firstDayOfMonth: function firstDayOfMonth() {
-      var t = this;
-      var firstDay = moment(t.dateContext).subtract(t.currentDate - 1, 'days');
-      return firstDay.weekday();
-    },
-
-    initialDate: function initialDate() {
-      var t = this;
-      return t.today.get('date');
-    },
-    initialMonth: function initialMonth() {
-      var t = this;
-      return t.today.format('MMMM');
-    },
-    initialYear: function initialYear() {
-      var t = this;
-      return t.today.format('Y');
-    }
-  },
+  computed: {},
   methods: {
-    addMonth: function addMonth() {
-      var t = this;
-      t.dateContext = moment(t.dateContext).add(1, 'month');
+    addWeek: function addWeek() {
+
+      this.dateContext = moment(this.dateContext).add(1, 'week');
+      return this.weeklyCalendar();
     },
-    subtractMonth: function subtractMonth() {
-      var t = this;
-      t.dateContext = moment(t.dateContext).subtract(1, 'month');
+    subtractWeek: function subtractWeek() {
+      this.dateContext = moment(this.dateContext).subtract(1, 'week');
+      return this.weeklyCalendar();
     },
-    fuck: function fuck(n) {
-      return moment().startOf('week').add(n, 'days').format("MMMM Do,dddd");
+    weeklyCalendar: function weeklyCalendar(n) {
+      return moment(this.dateContext).startOf('week').add(n, 'days').format("ddd M/DD/Y");
     }
   }
 });
@@ -18424,7 +18359,7 @@ window.axios.defaults.headers.common = {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(10)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 157 */
@@ -58232,25 +58167,34 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "column"
-  }, [_c('div', {
-    staticClass: "calendar-header"
+  }, [_c('a', {
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.subtractWeek($event)
+      }
+    }
   }, [_c('i', {
-    staticClass: "fa fa-fw fa-chevron-left",
-    on: {
-      "click": _vm.subtractMonth
-    }
-  }), _vm._v(" "), _c('h4'), _vm._v(" "), _c('i', {
-    staticClass: "fa fa-fw fa-chevron-right",
-    on: {
-      "click": _vm.addMonth
-    }
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "row"
-  }, _vm._l((7), function(n) {
+    staticClass: "fa fa-fw fa-chevron-left"
+  })])]), _vm._v(" "), _vm._l((7), function(n) {
     return _c('div', {
       staticClass: "columns"
-    }, [_vm._v("\n        " + _vm._s(_vm.fuck(n)) + "\n\n    ")])
-  }))])
+    }, [_vm._v("\n        " + _vm._s(_vm.weeklyCalendar(n)) + "\n\n    ")])
+  }), _vm._v(" "), _c('div', {
+    staticClass: "column "
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.addWeek($event)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-fw fa-chevron-right"
+  })])])], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
