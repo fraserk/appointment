@@ -107,3 +107,55 @@ h3{
       padding-bottom: 0px
    }
 }
+
+.booking-sidebar{
+  background-color: #1C72E0;
+  color: #fff;
+  font-size: 0.8em;
+  h2 {
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: .9em;
+    color: #fff;
+  }
+  .content{
+    padding: 10px;
+  }
+}
+.booking-content{
+  padding-left: 0;
+  h2{
+    font-size: 0.99em;
+    font-family: 'poppins';
+  }
+  .dates{
+    :hover{
+      background: #f3f3f3;
+    }
+  }
+  .weeklyCalendar{
+
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+      .dates .dayName{
+
+        font-size: 1.4em;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-family: 'Raleway';
+        font-weight: 400;
+        color: #000;
+
+
+      }
+      .dates .dayNumber a{
+        font-family: 'Roboto';
+        font-size: 1.3em;
+        color: #4d545d;
+      }
+
+
+  }
+
+
+}

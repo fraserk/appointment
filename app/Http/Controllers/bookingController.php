@@ -27,5 +27,13 @@ class bookingController extends Controller
     {
         $period = $service->timeslots()->whereDate('period', date('2017-04-14'))->get();
         return View('services.show', compact('service', 'period'));
+
+        //   $period = $service->timeslots()->whereBetween('period', [
+            // Carbon::parse('4/10/2017')->startOfDay(),
+            // Carbon::parse('4/16/2017')->endOfDay(),
+            // ])->get()
+            //   ->groupBy(function ($date) {
+            //       return Carbon::parse($date->period)->format('Y-m-d');
+            //   });
     }
 }

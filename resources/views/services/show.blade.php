@@ -10,7 +10,7 @@
     </div>
 
     <div class="row">
-      <div class="small-2 columns">
+      {{-- <div class="small-2 columns">
         <div class="card">
           <div class="card-divider">
             price ${{$service->price  }}
@@ -19,21 +19,19 @@
             test
           </div>
         </div>
-      </div>
+      </div> --}}
 
-      <div class="small-10 columns">
-        <h5>Available Appointment</h5>
-        <hr>
-        <appointmentcalendar>
+      <div class="small-12 columns">
+        <appointmentcalendar :period="{{ $period }}">
         </appointmentcalendar>
 
         </div>
-        <ul>
+        {{-- <ul>
           @foreach ($period as $dt)
             <li>{{ $dt->period->format('M D d Y H:i A') }}</li>
           @endforeach
 
-        </ul>
+        </ul> --}}
 
       </div>
     </div>

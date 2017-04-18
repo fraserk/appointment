@@ -5,28 +5,31 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Service;
+use App\Company;
 
-class userServiceController extends Controller
+class ServiceController extends Controller
 {
-    public function __construct(User $user)
+    protected $company;
+    protected $user;
+
+    public function __construct()
     {
-        $this->user = $user;
         $this->middleware(['auth']);
     }
-    public function index()
+    public function index(Company $company)
     {
-        return Service::getServiceByOwner()->orderBy('id', 'desc')->get();
+        return Service::GetServiceByCompany($company)->orderBy('id', 'desc')->get();
     }
 
-    public function store()
+    public function store(Company $company)
     {
-        $user = request()->user()->addService(request()->only(['name','price','duration']));
+        $user = $company->addService(request()->only(['name','price','duration']));
         return response('created', 201);
     }
 
     public function update($user, $service)
     {
-        $Userservice = Service::findServiceById($service)->GetServiceByOwner()->firstorfail()->update(request()->only(['name']));
+        $Userservice = Service::findServiceById($service)->firstorfail()->update(request()->only(['name']));
         return response('Service Upate', 201);
     }
 

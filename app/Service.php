@@ -9,9 +9,9 @@ class Service extends Model
     protected $guarded = [];
     //
 
-    public function scopeGetServiceByOwner($query)
+    public function scopeGetServiceByCompany($query, $company)
     {
-        return $query->where('user_id', auth()->user()->id);
+        return $query->where('company_id', $company->id);
     }
     // public function scopeUpdatedService($service, $request)
     // {
@@ -37,16 +37,15 @@ class Service extends Model
 
     public function addTimeSlot($company)
     {
-        //return ;
-      foreach ($company->hours as $hour) {
-          $start = new \DateTime($hour->day_of_week .$hour->open_time);
-          $end = new \Datetime($hour->day_of_week .$hour->close_time);
-          $interval = new \DateInterval('PT30M');
-          $period = new \DatePeriod($start, $interval, $end);
+        foreach ($company->hours as $hour) {
+            $start = new \DateTime($hour->day_of_week .$hour->open_time);
+            $end = new \Datetime($hour->day_of_week .$hour->close_time);
+            $interval = new \DateInterval('PT30M');
+            $period = new \DatePeriod($start, $interval, $end);
 
-          foreach ($period as $dt) {
-              $this->timeslots()->create(['period'=>$dt]);
-          }
-      }
+            foreach ($period as $dt) {
+                $this->timeslots()->create(['period'=>$dt]);
+            }
+        }
     }
 }

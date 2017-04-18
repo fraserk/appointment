@@ -26,20 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token'
     ];
-    public function service()
-    {
-        return $this->hasMany(Service::class);
-    }
+
     public function company()
     {
         return $this->hasOne(Company::class);
     }
 
-    public function addService($request)
-    {
-        $service = $this->service()->create($request);
-        $service->addTimeSlot(auth()->user()->company);
-    }
+
 
     public function addCompany($request)
     {

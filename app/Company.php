@@ -7,12 +7,22 @@ use App\Hour;
 
 class Company extends Model
 {
-    protected $fillable =['name','store_hours','street_address','city','state','zip_code','bio'];
-    protected $casts= ['store_hours'=>'json'];
+    protected $guarded =[];
+
 
     public function hours()
     {
         return $this->hasMany(Hour::class);
+    }
+    public function service()
+    {
+        return $this->hasMany(Service::class);
+    }
+    public function addService($request)
+    {
+        $service = $this->service()->create($request);
+        $service->addTimeSlot(auth()->user()->company);
+        return $service;
     }
 
     public function addStoreHours($storeHours)

@@ -17767,8 +17767,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['period'],
   data: function data() {
     return {
       today: moment(),
@@ -17790,7 +17821,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return this.weeklyCalendar();
     },
     weeklyCalendar: function weeklyCalendar(n) {
-      return moment(this.dateContext).startOf('week').add(n, 'days').format("ddd M/DD/Y");
+      return moment(this.dateContext).startOf('week').add(n, 'days').format("MM/DD");
+    },
+    weekName: function weekName(n) {
+      return moment(this.dateContext).startOf('week').add(n, 'days').format("ddd");
+    },
+    timeslot: function timeslot(slot) {
+      return moment(slot).format('h:mm A');
     }
   }
 });
@@ -18359,7 +18396,7 @@ window.axios.defaults.headers.common = {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(10)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 157 */
@@ -58162,11 +58199,15 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "calendar"
+    staticClass: "card"
   }, [_c('div', {
     staticClass: "row"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "column card-section text-center booking-content"
+  }, [_c('h2', [_vm._v("Schedule Appointment")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+    staticClass: "row collapse weeklyCalendar align-middle"
   }, [_c('div', {
-    staticClass: "column"
+    staticClass: "column "
   }, [_c('a', {
     on: {
       "click": function($event) {
@@ -58175,13 +58216,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_c('i', {
-    staticClass: "fa fa-fw fa-chevron-left"
+    staticClass: "fa fa-fw fa-chevron-left "
   })])]), _vm._v(" "), _vm._l((7), function(n) {
     return _c('div', {
-      staticClass: "columns"
-    }, [_vm._v("\n        " + _vm._s(_vm.weeklyCalendar(n)) + "\n\n    ")])
+      staticClass: "column dates"
+    }, [_c('a', {
+      attrs: {
+        "href": "#"
+      }
+    }, [_c('div', [_c('div', {
+      staticClass: "dayName"
+    }, [_vm._v("\n                  " + _vm._s(_vm.weekName(n)) + "\n                ")]), _vm._v(" "), _c('div', {
+      staticClass: "dayNumber"
+    }, [_c('a', {
+      attrs: {
+        "href": "#"
+      }
+    }, [_vm._v(_vm._s(_vm.weeklyCalendar(n)))])])])])])
   }), _vm._v(" "), _c('div', {
-    staticClass: "column "
+    staticClass: "column"
   }, [_c('a', {
     attrs: {
       "href": "#"
@@ -58194,8 +58247,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "fa fa-fw fa-chevron-right"
-  })])])], 2)])
-},staticRenderFns: []}
+  })])])], 2)])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "large-3 columns booking-sidebar"
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('h2', [_vm._v("Hair Cut")]), _vm._v(" "), _c('small', [_vm._v("$75.00")]), _vm._v(" "), _c('p', [_vm._v("By default, all columns in a flex grid stretch to be equal height.\n          This behavior can be changed with another set of alignment classes. That's right, middle alignment in CSS!")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row "
+  }, [_c('div', {
+    staticClass: "column "
+  }, [_c('small', [_vm._v("SELECT A DATE")])])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

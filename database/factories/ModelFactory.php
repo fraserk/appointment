@@ -53,8 +53,8 @@ $factory->define(App\Hour::class, function (Faker\Generator $facker) {
 });
 $factory->define(App\Service::class, function (Faker\Generator $facker) {
     return [
-    'user_id'=> function () {
-        return factory(App\User::class)->create()->id;
+    'company_id'=> function () {
+        return factory(App\Company::class)->create()->id;
     },
     'name'=> 'Hair Cut',
     'duration' => ('30'),
