@@ -9,9 +9,6 @@ use App\Company;
 
 class ServiceController extends Controller
 {
-    protected $company;
-    protected $user;
-
     public function __construct()
     {
         $this->middleware(['auth']);
@@ -33,9 +30,13 @@ class ServiceController extends Controller
         return response('Service Upate', 201);
     }
 
+    public function show(Company $company, Service $service)
+    {
+        return $service->timeslots()->whereDate('period', request()->get('date'))->get();
+    }
     public function destroy($user, $service)
     {
-        $services = Service::findServiceById($service)->GetServiceByOwner()->firstorfail()->delete();
+        $services = Service::findServiceById($service)->firstorfail()->delete();
         return response('deleted', 201);
     }
 }

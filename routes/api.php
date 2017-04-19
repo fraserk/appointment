@@ -18,6 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:api')->resource('company.service', 'ServiceController');
-Route::middleware('auth:api')->resource('user.company', 'userCompanyController');
+Route::middleware('auth:api')->resource('user.company', 'CompanyController');
 Route::middleware('auth:api')->resource('company.hour', 'hoursController');
 Route::middleware('auth:api')->get('test', 'backendController@getHours');

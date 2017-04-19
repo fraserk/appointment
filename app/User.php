@@ -36,9 +36,8 @@ class User extends Authenticatable
 
     public function addCompany($request)
     {
-        $storehours =  $this->defaultStoreHours();
         $company = $this->company()->create($request);
-        $company->addStoreHours($storehours);
+        $company->addStoreHours($this->defaultStoreHours());
         return $company;
     }
 
