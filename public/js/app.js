@@ -17797,11 +17797,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['period'],
+  props: ['company', 'user'],
   data: function data() {
     return {
+      timeslots: {},
       today: moment(),
       dateContext: moment(),
       days: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
@@ -17821,13 +17842,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return this.weeklyCalendar();
     },
     weeklyCalendar: function weeklyCalendar(n) {
-      return moment(this.dateContext).startOf('week').add(n, 'days').format("MM/DD");
+      return moment(this.dateContext).startOf('week').add(n, 'days').format("DD");
     },
     weekName: function weekName(n) {
       return moment(this.dateContext).startOf('week').add(n, 'days').format("ddd");
     },
+    formattedDate: function formattedDate(n) {
+      return moment(this.dateContext).startOf('week').add(n, 'days').format("Y-MM-DD");
+    },
     timeslot: function timeslot(slot) {
       return moment(slot).format('h:mm A');
+    },
+    getTimeslots: function getTimeslots(date) {
+      var _this = this;
+
+      axios.get('/api/company/' + this.user.company.id + '/service/' + this.company.service['0'].id + '?api_token=' + this.user.api_token + '&date=' + date, this.$data).then(function (response) {
+        _this.$set(_this.$data, 'timeslots', response.data);
+      });
     }
   }
 });
@@ -18058,7 +18089,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['user'],
+  props: ['user', 'company'],
   data: function data() {
     return {
       revealLabel: '',
@@ -18100,7 +18131,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       this.saving = true;
-      axios.post('api/user/' + this.user.id + '/service?api_token=' + this.user.api_token, this.$data).then(function (response) {
+      axios.post('api/company/' + this.company + '/service?api_token=' + this.user.api_token, this.$data).then(function (response) {
 
         _this2.name = '';
         _this2.saving = false;
@@ -18118,7 +18149,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this3 = this;
 
       this.saving = true;
-      axios.patch('api/user/' + this.user.id + '/service/' + this.service + '?api_token=' + this.user.api_token, this.$data).then(function (response) {
+      axios.patch('api/company/' + this.company + '/service/' + this.service + '?api_token=' + this.user.api_token, this.$data).then(function (response) {
 
         _this3.name = '';
         _this3.service = '';
@@ -18137,7 +18168,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this4 = this;
 
       this.deleting = true;
-      axios.delete('api/user/' + this.user.id + '/service/' + this.service + '?api_token=' + this.user.api_token).then(function (response) {
+      axios.delete('api/company/' + this.company + '/service/' + this.service + '?api_token=' + this.user.api_token).then(function (response) {
 
         _this4.name = '';
         _this4.service = '';
@@ -18208,7 +18239,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['user'],
+  props: ['user', 'company'],
   data: function data() {
     return {
       services: {}
@@ -18227,7 +18258,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getservices: function getservices() {
       var _this2 = this;
 
-      axios.get('api/user/' + this.user.id + '/service?api_token=' + this.user.api_token, this.$data).then(function (response) {
+      axios.get('api/company/' + this.company + '/service?api_token=' + this.user.api_token, this.$data).then(function (response) {
         _this2.$set(_this2.$data, 'services', response.data);
       });
     },
@@ -18396,7 +18427,7 @@ window.axios.defaults.headers.common = {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(10)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 157 */
@@ -58201,11 +58232,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "card"
   }, [_c('div', {
-    staticClass: "row"
+    staticClass: "row collapse"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "column card-section text-center booking-content"
-  }, [_c('h2', [_vm._v("Schedule Appointment")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
-    staticClass: "row collapse weeklyCalendar align-middle"
+    staticClass: "small-12 large-10 columns   card-section text-center booking-content"
+  }, [_c('h2', [_vm._v("Schedule An Appointment")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+    staticClass: "row small-12 collapse weeklyCalendar align-middle"
   }, [_c('div', {
     staticClass: "column "
   }, [_c('a', {
@@ -58223,16 +58254,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('a', {
       attrs: {
         "href": "#"
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.getTimeslots(_vm.formattedDate(n))
+        }
       }
     }, [_c('div', [_c('div', {
-      staticClass: "dayName"
-    }, [_vm._v("\n                  " + _vm._s(_vm.weekName(n)) + "\n                ")]), _vm._v(" "), _c('div', {
       staticClass: "dayNumber"
-    }, [_c('a', {
-      attrs: {
-        "href": "#"
-      }
-    }, [_vm._v(_vm._s(_vm.weeklyCalendar(n)))])])])])])
+    }, [_vm._v("\n                  " + _vm._s(_vm.weeklyCalendar(n)) + "\n                ")]), _vm._v(" "), _c('div', {
+      staticClass: "dayName"
+    }, [_vm._v("\n                  " + _vm._s(_vm.weekName(n)) + "\n                ")])])])])
   }), _vm._v(" "), _c('div', {
     staticClass: "column"
   }, [_c('a', {
@@ -58247,10 +58280,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "fa fa-fw fa-chevron-right"
-  })])])], 2)])])])
+  })])])], 2), _vm._v(" "), _c('div', {
+    staticClass: "row align-center"
+  }, [_c('div', {
+    staticClass: " small-12 large-10 columns"
+  }, [_c('div', {
+    staticClass: "row has-top-margin timeslots"
+  }, _vm._l((_vm.timeslots), function(time) {
+    return _c('div', {
+      staticClass: "columns small-12 large-2 "
+    }, [_c('div', {
+      staticClass: "callout "
+    }, [_vm._v("\n                    " + _vm._s(time.period) + "\n                  ")])])
+  }))])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "large-3 columns booking-sidebar"
+    staticClass: "small-12 large-2 columns booking-sidebar"
   }, [_c('div', {
     staticClass: "content"
   }, [_c('h2', [_vm._v("Hair Cut")]), _vm._v(" "), _c('small', [_vm._v("$75.00")]), _vm._v(" "), _c('p', [_vm._v("By default, all columns in a flex grid stretch to be equal height.\n          This behavior can be changed with another set of alignment classes. That's right, middle alignment in CSS!")])])])
@@ -58258,8 +58303,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "row "
   }, [_c('div', {
-    staticClass: "column "
-  }, [_c('small', [_vm._v("SELECT A DATE")])])])
+    staticClass: " small-12 columns "
+  }, [_c('span', {
+    staticClass: "has-small-text"
+  }, [_vm._v("SELECT A DATE")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

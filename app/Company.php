@@ -8,7 +8,7 @@ use App\Hour;
 class Company extends Model
 {
     protected $guarded =[];
-
+    protected $with =['service'];
 
     public function hours()
     {

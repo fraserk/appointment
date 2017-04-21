@@ -22,7 +22,7 @@
       </div> --}}
 
       <div class="small-12 columns">
-        <appointmentcalendar :period="{{ $period }}">
+        <appointmentcalendar :company="{{ auth()->user()->company}}" :user="{{ auth()->user()}}" >
         </appointmentcalendar>
 
         </div>

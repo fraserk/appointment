@@ -2,7 +2,7 @@
   @section('content')
     <div class="top-bar">
       <div class="top-bar-title">
-        {{ $user->name }}
+        {{ $data->name }}
       </div>
       <div class="top-bar-right">
         <a href="#" class="button primary">Book An Appointment</a>
@@ -13,9 +13,9 @@
       <div class="large-3 columns ">
         <h4>Address</h4>
         <address class="">
-          {{ $user->company->name }}<br>
-          {{ $user->company->street_address }}<br>
-          {{ $user->company->city }} {{ $user->company->state }} {{ $user->company->zip_code }}
+          {{ $data->company->name }}<br>
+          {{ $data->company->street_address }}<br>
+          {{ $data->company->city }} {{ $data->company->state }} {{ $data->company->zip_code }}
         </address>
       </div>
 
@@ -32,7 +32,7 @@
     </div>
     <hr>
     <div class="row">
-      @foreach ($user->service as $service)
+      @foreach ($data->company->service as $service)
         <div class="small-3 columns">
           <div class="card">
             <div class="card-divider">

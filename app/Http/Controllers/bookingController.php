@@ -9,9 +9,13 @@ use App\Classes\StoreHours;
 
 class bookingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(User $user)
     {
-        $user = $user->with('company.hours', 'service')->firstorfail();
+        $data = $user->with('company.hours', 'company.service')->firstorfail();
 
         $storeHours = $user->company->hours;
         $hoursArray = $storeHours->map(function ($item, $key) {
@@ -21,12 +25,11 @@ class bookingController extends Controller
         $hours = $hoursArray->collapse()->toarray();
         $store_hours = new StoreHours($hours);
         //dd($hours, $user->company->store_hours, $store_hours->hours_overview());
-        return View('appointments.index', compact('user', 'store_hours'));
+        return View('appointments.index', compact('data', 'store_hours'));
     }
     public function show(Service $service)
     {
-        $period = $service->timeslots()->whereDate('period', date('2017-04-14'))->get();
-        return View('services.show', compact('service', 'period'));
+        return View('services.show', compact('service'));
 
         //   $period = $service->timeslots()->whereBetween('period', [
             // Carbon::parse('4/10/2017')->startOfDay(),

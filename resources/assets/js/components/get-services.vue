@@ -27,7 +27,7 @@
 
 <script>
 export default{
- props: ['user'],
+ props: ['user','company'],
  data(){
    return{
      services:{
@@ -44,9 +44,9 @@ export default{
   },
   methods: {
     getservices(){
-      axios.get('api/user/'+this.user.id+ '/service?api_token='+this.user.api_token,this.$data).then((response)=>{
+      axios.get(`api/company/${this.company}/service?api_token=${this.user.api_token}`,this.$data).then((response)=>{
         this.$set(this.$data,'services',response.data);
-        
+
       });
     },
 

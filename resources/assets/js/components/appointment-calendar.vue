@@ -1,7 +1,7 @@
 <template >
   <div class="card">
-    <div class="row">
-      <div class="large-3 columns booking-sidebar">
+    <div class="row collapse">
+      <div class="small-12 large-2 columns booking-sidebar">
           <div class="content">
             <h2>Hair Cut</h2>
             <small>$75.00</small>
@@ -10,26 +10,26 @@
           </div>
 
         </div>
-        <div class="column card-section text-center booking-content">
-          <h2>Schedule Appointment</h2>
+        <div class="small-12 large-10 columns   card-section text-center booking-content">
+          <h2>Schedule An Appointment</h2>
           <div class="row ">
-            <div class="column ">
-              <small>SELECT A DATE</small>
+            <div class=" small-12 columns ">
+              <span class="has-small-text">SELECT A DATE</span>
             </div>
           </div>
-            <div class="row collapse weeklyCalendar align-middle">
+            <div class="row small-12 collapse weeklyCalendar align-middle">
               <div class="column ">
 
                 <a @click.prevent="subtractWeek" ><i class="fa fa-fw fa-chevron-left " ></i></a>
               </div>
               <div class="column dates" v-for="n in 7">
-              <a href="#" class="">
+              <a href="#" @click.prevent="getTimeslots(formattedDate(n))">
                 <div>
+                  <div class="dayNumber">
+                    {{weeklyCalendar(n)}}
+                  </div>
                   <div class="dayName">
                     {{weekName(n)}}
-                  </div>
-                  <div class="dayNumber">
-                    <a href="#">{{weeklyCalendar(n)}}</a>
                   </div>
                 </div>
               </a>
@@ -40,6 +40,26 @@
 
               </div>
             </div>
+
+            <div class="row align-center">
+              <div class=" small-12 large-10 columns">
+                <div class="row has-top-margin timeslots">
+                  <div class="columns small-12 large-2 " v-for="time in timeslots">
+                    <div class="callout " >
+                      {{time.period}}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <!-- <div class="row">
+              <div class="large-1 columns" v-for="time in timeslots">
+                {{time.period}}
+              </div>
+            </div> -->
         </div>
       </div>
     </div>
@@ -47,9 +67,10 @@
 
 <script>
 export default {
-props: ['period'],
+props: ['company','user'],
   data(){
     return{
+      timeslots: {},
       today:moment(),
       dateContext: moment(),
       days: ['S','M','T','W','T','F','S']
@@ -73,13 +94,23 @@ props: ['period'],
         return this.weeklyCalendar();
       },
       weeklyCalendar: function(n){
-        return moment(this.dateContext).startOf('week').add(n, 'days').format("MM/DD");
+        return moment(this.dateContext).startOf('week').add(n, 'days').format("DD");
       },
       weekName: function(n){
         return moment(this.dateContext).startOf('week').add(n, 'days').format("ddd");
       },
+      formattedDate: function(n){
+        return moment(this.dateContext).startOf('week').add(n, 'days').format("Y-MM-DD");
+      },
       timeslot(slot){
         return moment(slot).format('h:mm A');
+      },
+      getTimeslots(date){
+        axios.get(`/api/company/${this.user.company.id}/service/${this.company.service['0'].id}?api_token=${this.user.api_token}&date=${date}`,this.$data).then((response)=>{
+        this.$set(this.$data,'timeslots',response.data);
+
+
+        });
       }
   }
 }

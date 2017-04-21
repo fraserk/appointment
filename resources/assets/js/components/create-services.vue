@@ -75,7 +75,7 @@
 
 <script>
     export default {
-      props: ['user'],
+      props: ['user','company'],
       data() {
         return{
           revealLabel:'',
@@ -113,7 +113,7 @@
           },
           saveService(){
             this.saving = true
-            axios.post('api/user/'+this.user.id+ '/service?api_token='+this.user.api_token,this.$data).then((response) =>{
+            axios.post('api/company/'+this.company+ '/service?api_token='+this.user.api_token,this.$data).then((response) =>{
 
               this.name = ''
               this.saving = false
@@ -129,7 +129,7 @@
           },
           editService(){
             this.saving = true
-            axios.patch('api/user/'+this.user.id+ '/service/'+this.service+'?api_token='+this.user.api_token,this.$data).then((response) =>{
+            axios.patch('api/company/'+this.company+ '/service/'+this.service+'?api_token='+this.user.api_token,this.$data).then((response) =>{
 
               this.name = '';
               this.service='';
@@ -146,7 +146,7 @@
           },
           deleteService(){
             this.deleting = true
-            axios.delete('api/user/'+this.user.id+ '/service/'+this.service+'?api_token='+this.user.api_token).then((response) =>{
+            axios.delete('api/company/'+this.company+ '/service/'+this.service+'?api_token='+this.user.api_token).then((response) =>{
 
               this.name = '';
               this.service='';
