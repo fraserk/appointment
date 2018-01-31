@@ -34,6 +34,17 @@ class Service extends Model
     {
         return  $this->belongsTo(Company::class);
     }
+    public function workers()
+    {
+        return  $this->belongsToMany(User::class,'service_user','user_id','service_id');
+    }
+
+    public function addWorker($workers)
+    {
+
+        $this->workers()->sync($workers);
+        return $this;
+    }
 
     public function addTimeSlot($company)
     {

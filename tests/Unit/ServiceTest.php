@@ -35,4 +35,20 @@ class ServiceTest extends TestCase
         $service = Service::getServiceByCompany($company)->get();
         $this->assertEquals('2', $service->count());
     }
+
+    /**
+     * @test
+     */
+
+     public function it_assign_a_user_to_a_service()
+     {
+        $admin = factory(User::class)->create();
+        $user1 = factory(User::class)->create();
+        $user2 = factory(User::class)->create();        
+        $this->be($admin);
+        $company = factory(Company::class)->create(['user_id' => $admin->id]);
+        $service = $company->addService(['name' => 'Hair Cut', 'price' => 20, 'duration' => 30]);
+        $service->addWorker([$user1->id,$user2->id]);
+        $this->assertEquals('2',$service->workers()->count());
+     }
 }

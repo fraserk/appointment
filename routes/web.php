@@ -22,3 +22,14 @@ Route::get('/services', 'backendController@services')->name('services');
 Route::get('/settings', 'backendController@settings')->name('settings');
 Route::get('/appointment/{user}', 'bookingController@index')->name('booking');
 Route::get('/service/{service}/', 'bookingController@show')->name('show.service');
+
+Route::prefix('backend')->group(function(){
+    route::get('/services/create','serviceController@create')->name('service.create');
+    route::post('/services','serviceController@store')->name('service.store');
+    route::patch('/services/{service}','serviceController@update')->name('service.update');
+
+    Route::get('/{company}/staff', 'staffsController@index')->name('staff.index');
+    Route::post('/staff', 'staffsController@store')->name('staff.store');
+    Route::get('/settings/schedule/create','schedulesController@create')->name('schedule.create');
+    Route::patch('/settings/schedule/{schedule}/update','schedulesController@update')->name('schedule.update');
+});

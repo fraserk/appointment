@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','api_token',
+        'name', 'email', 'password','api_token','company_id',
     ];
 
     /**
@@ -32,60 +32,79 @@ class User extends Authenticatable
         return $this->hasOne(Company::class);
     }
 
+    public function schedules()
+    {
+      return $this->hasMany(Schedule::class,'staff_id');
+    }
 
+    public function addSchedule($schedule)
+    {
+      $this->schedules()->createMany($schedule);
+    }
+
+    public function updateSchedule($timeSchedule,$schedule)
+    {
+        $schedule->update($timeSchedule);
+       //return $schedule;
+
+    }
 
     public function addCompany($request)
     {
         $company = $this->company()->create($request);
-        $company->addStoreHours($this->defaultStoreHours());
+        //$company->addStoreHours($this->defaultStoreHours());
         return $company;
     }
 
     private function defaultStoreHours()
     {
-        return [
-          [
-            'day_of_week'=> 'Monday',
-            'open_time' => ('9:00 am'),
-            'close_time'=> ('5:00 pm'),
-            'is_open' => true
-          ],
-          [
-            'day_of_week'=> 'Tuesday',
-            'open_time' => ('9:00 am'),
-            'close_time'=> ('5:00 pm'),
-            'is_open' => true
-          ],
-          [
-            'day_of_week'=> 'Wednesday',
-            'open_time' => ('9:00 am'),
-            'close_time'=> ('5:00 pm'),
-            'is_open' => true
-          ],
-          [
-            'day_of_week'=> 'Thursday',
-            'open_time' => ('9:00 am'),
-            'close_time'=> ('5:00 pm'),
-            'is_open' => true
-          ],
-          [
-            'day_of_week'=> 'Friday',
-            'open_time' => ('9:00 am'),
-            'close_time'=> ('5:00 pm'),
-            'is_open' => true
-          ],
-          [
-            'day_of_week'=> 'Saturday',
-            'open_time' => ('9:00 am'),
-            'close_time'=> ('5:00 pm'),
-            'is_open' => true
-          ],
-          [
-            'day_of_week'=> 'Sunday',
-            'open_time' => ('9:00 am'),
-            'close_time'=> ('5:00 pm'),
-            'is_open' => true
-          ],
-      ];
+         return [
+          "schedule" =>  [
+            [
+              'day_of_week'=> 'Monday',
+              'start' => ('9:00 am'),
+              'end'=> ('5:00 pm'),
+              'is_open' => true
+              ],
+            [
+              'day_of_week'=> 'Tuesday',
+              'start' => ('9:00 am'),
+              'end'=> ('5:00 pm'),
+              'is_open' => true
+              ],
+            [
+              'day_of_week'=> 'Wednesday',
+              'start' => ('9:00 am'),
+              'end'=> ('5:00 pm'),
+              'is_open' => true
+              ],
+            [
+              'day_of_week'=> 'Thursday',
+              'start' => ('9:00 am'),
+              'end'=> ('5:00 pm'),
+              'is_open' => true
+              ],
+            [
+              'day_of_week'=> 'Friday',
+              'start' => ('9:00 am'),
+              'end'=> ('5:00 pm'),
+              'is_open' => true
+              ],
+            [
+              'day_of_week'=> 'Saturday',
+              'start' => ('9:00 am'),
+              'end'=> ('5:00 pm'),
+              'is_open' => true
+              ],
+            [
+              'day_of_week'=> 'Sunday',
+              'start' => ('9:00 am'),
+              'end'=> ('5:00 pm'),
+              'is_open' => true
+              ],
+        ]
+        ];
     }
+
+
 }

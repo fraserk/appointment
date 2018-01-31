@@ -11,10 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-    <!-- import CSS -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.1/fullcalendar.min.css">
-    <!-- import JavaScript -->
+    <link href="/css/main.css" rel="stylesheet">
+
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -22,16 +21,41 @@
         ]) !!};
     </script>
 </head>
-  <body>
-    <div id="app">
-      @yield('content')
+<body class="font-sans bg-teal-lightest">
+    <div id="app" class="">
+      <div class="bg-teal-darker ">
+          <div class="container mx-auto container-lg">
+            <div class="flex py-4 justify-between px-4 md:px-0 items-center">
+              <div class="w-1/2 text-lg font-serif text-white font-medium">
+                    <div class="">
+                      appointy
+                    </div>
+              </div>
+              <div class="w-1/2 text-right text-grey-lighter font-normal text-sm invisible md:visible ">
+                <span class="mr-2">kimfraser@gmail.com</span>
+                <span class="mr-2"><a class="no-underline text-grey-lighter" href="{{ route('booking',auth()->user()) }}">Booking Page</a> </span>
+                <span class="mr-2"><a class="no-underline text-grey-lighter" href="{{ route('settings') }}">Settings</a> </span>
+                 <a class="no-underline text-grey-lighter"href="{{ url('/logout') }}"
+                    onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
 
-    </div>
+      <div class="container container-lg mx-auto mt-4">
+           @yield('content')
+      </div>
+      </div>
+
+
+    <!-- Scripts -->
     <script src="/js/app.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.1/fullcalendar.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
     @yield('scripts')
-  </body>
+</body>
 </html>

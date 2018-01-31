@@ -1,9 +1,10 @@
 <?php
 
-use Tests\TestCase;
+use Tests\Feature;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\Testcase;
 use App\User;
 use App\Service;
 use App\Company;
@@ -36,7 +37,21 @@ class CreateServiceTest extends TestCase
     }
 
 
+    /***
+     * @test 
+     * 
+     */
+    public function create_a_new_service()
+    {
+       $user = factory(user::class)->create();
+       $this->be($user);
+       $company = factory(Company::class)->create(['user_id' => $user->id]);
+       $service = factory(Service::class)->raw();
+       $this->get(route('backend.service.create'))->assertStatus(200);
+       $response = $this->post(route('backend.service.store',$service));
+       $response->assertStatus(202);
 
+    }
     /**
      * @test
      */

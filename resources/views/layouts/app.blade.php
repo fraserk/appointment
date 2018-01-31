@@ -11,8 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+    <link href="/css/main.css" rel="stylesheet">
+
 
     <!-- Scripts -->
     <script>
@@ -21,66 +21,61 @@
         ]) !!};
     </script>
 </head>
-<body>
-    <div id="app">
-          <div class="off-canvas position-left reveal-for-medium" id="offCanvas" data-off-canvas>
-            <div class="sidebarHeader">
-              Appointy
-            </div>
-            {{--Off Canvas Menu  --}}
-            <ul class="menu vertical">
-              <li><a href="#">Dashboard</a></li>
-              <li><a href="{{ route('services') }}">Services</a></li>
-              <li><a href="#">Online Bookings</a></li>
-              <li><a href="#">Clients</a></li>
-              <li><a href="#">Staff</a></li>
-              <li><a href="{{ route('settings') }}">Settings</a></li>
-              <li><a href="{{ route('booking',auth()->user()) }}">Booking Page</a></li>
-            </ul>
-          </div>
-          <div class="off-canvas-content" data-off-canvas-content>
-            <div class="top-bar">
-              <div class="top-bar-left">
-
+<body class="font-sans bg-teal-lightest">
+    <div id="app" class="">
+      <div class="bg-teal-darker ">
+          <div class="container mx-auto container-lg">
+            <div class="flex py-4 justify-between px-4 md:px-0 items-center">
+              <div class="w-1/2 text-lg font-serif text-white font-medium">
+                    <div class="">
+                      appointy
+                    </div>
               </div>
-              <div class="top-bar-right">
-                <ul class="menu">
-                  @if(Auth::guest())
-                <li><a href="{{ url('/login') }}">Login</a></li>
-                <li><a href="{{ url('/register') }}">Register</a></li>
-              @else
-                <li><a href="#">{{auth()->user()->email}}</a></li>
-                <li>
-                <a href="{{ url('/logout') }}"
+              <div class="w-1/2 text-right text-grey-lighter font-normal text-sm invisible md:visible ">
+                <span class="mr-2">kimfraser@gmail.com</span>
+                <span class="mr-2"><a class="no-underline text-grey-lighter" href="{{ route('booking',auth()->user()) }}">Booking Page</a> </span>
+                <span class="mr-2"><a class="no-underline text-grey-lighter" href="{{ route('schedule.create') }}">Settings</a> </span>
+                 <a class="no-underline text-grey-lighter"href="{{ url('/logout') }}"
                     onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
                     Logout
                 </a>
-              </li>
-
                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
-              @endif
-                </ul>
               </div>
-
             </div>
-
-            @yield('content')
-
           </div>
+      </div>
+      <div class="bg-white border-b text-sm">
+        <div class="container container-lg mx-auto flex px-4 md:px-0">
+            <div class="flex -mb-px mr-4">
+              <a href="/home" class=" flex no-underline border-b border-blue-dark py-4">Dashboard</a>
+            </div>
+            <div class="flex -mb-px mr-4">
+              <a href="{{ route('services') }}" class=" flex no-underline border-transparent border-b hover:border-grey-dark py-4 text-grey-darker">Services</a>
+            </div>
+            <div class="flex -mb-px mr-4">
+              <a href="#" class=" flex no-underline border-transparent border-b hover:border-grey-dark py-4 text-grey-darker">Bookings</a>
+            </div>
+            <div class="flex -mb-px mr-4">
+              <a href="#" class=" flex no-underline border-transparent border-b hover:border-grey-dark py-4 text-grey-darker">Clients</a>
+            </div>
+            @if(Auth()->check())
+            <div class="flex -mb-px mr-4">
+              <a href="{{route('staff.index',auth()->user()->company)}}" class=" flex no-underline border-transparent border-b hover:border-grey-dark py-4 text-grey-darker">Staff</a>
+            </div>
+            @endif
+        </div>
+      </div>
+      <div class="container container-lg mx-auto mt-4">
+           @yield('content')
+      </div>
       </div>
 
 
-    </div>
-
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
-    <script>
-       $(document).foundation();
-    </script>
 </body>
 </html>

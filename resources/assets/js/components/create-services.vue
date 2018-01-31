@@ -1,75 +1,93 @@
 <template>
 <div class="">
+  
 
-  <a class="button tiny primary" @click.prevent="revealModel('Create')">Create New Service</a>
-  <div class="reveal" id="serviceModel" data-reveal>
-    <div class="card">
-      <div class="card-divider primary">
-        <span v-if="revealLabel === 'Edit'">Edit Service</span>
-        <span v-else>Create new service</span>
+
+  <div class="flex fixed z-1  w-full h-full rounded modal pin-l pin-t items-center justify-center" v-bind:class="{visible: createForm, 'invisible':hideForm}">
+    <div class="bg-white md:shadow-lg  opacity-100 mx-2 ">
+      <div class="flex ">
+        <div class=" p-4 w-full boder-b bg-grey-light font-semibold">
+          <span v-if="revealLabel === 'Edit'">Edit Service</span>
+          <span v-else>Create New Service</span>
+        </div>
       </div>
-      <div class="card-section">
 
-        <form @submit.prevent="formMethod">
+      <div class="mt-4 p-4">
 
-          <div class="row">
-            <div class="large-4 column">
-              <label for="">
-                Service name
-                <input type="text" v-model="name">
-
-              </label>
-            </div>
-            <div class="large-4 column">
-              <label for="">
-                Service Price
-                <input type="text" v-model="price">
-
-              </label>
-            </div>
-            <div class="large-4 column">
-              <label for="">
-                <label for="">
-                  SERVICE DURATION
-                  <input type="text" v-model="duration">
+          <form @submit.prevent="formMethod">
+            <div class="flex items-center mb-4">
+              <div class="w-1/3 text-right mr-4">
+                <label for="" class="block">
+                  Service name:
                 </label>
-              </label>
+              </div>
+              <div class="w-2/3">
+                  <input type="text" v-model="name" class="appearance-none bg-white shadow border  w-full p-2 " placeholder="Name of this service">
+              </div>
+              </div>
+
+
+              <div class="flex items-center mb-4">
+                <div class="w-1/3 text-right mr-4">
+                <label for="" class="block">
+                  Service Price:
+
+                </label>
+                </div>
+                  <div class="w-2/3">
+                      <input type="text" v-model="price" class="appearance-none bg-white shadow border  w-1/4 p-2 " placeholder="Service Price">
+                  </div>
+              </div>
+              <div class="flex items-center mb-4">
+                <div class="w-1/3 text-right mr-4">
+                <label for="" class="block">
+                  Service Duration:
+
+                </label>
+                </div>
+                  <div class="w-2/3">
+                      <input type="text" v-model="duration" class="appearance-none bg-white shadow border  w-1/4 p-2 " placeholder="Service Price">
+                  </div>
+              </div>
+              <div class="flex">
+                <div class="w-1/3 text-right mr-4">
+                <label for="" class="block">
+                  Service Desctiption:
+
+                </label>
+                </div>
+                  <div class="w-2/3">
+                      
+                       <textarea name="name" rows="8" cols="80" class="appearance-none bg-white shadow border  w-full p-2 "></textarea>
+                  </div>
+              </div>
+
+
+            <div class="flex mt-4 ">
+              <div class="w-full text-right">
+
+                <button  class="mr-4 py-2 px-4 bg-blue rounded text-xs text-white" :disabled="this.saving">
+                    {{createForm? 'CREATE':'EDIT'}}
+                  
+                 </button>
+
+                <button :disabled="this.deleting"  class="button tiny alert" v-if="revealLabel === 'Edit'" @click.prevent="deleteService(service)"> 
+                  Delete
+                </button>
+
+                <a href="#" class="button is-link" @click.prevent="hideForm = true" >cancel</a>
+              </div>
+
             </div>
 
 
-          </div>
-          <div class="row">
-            <div class="column">
-              <label for="">
-                Service Discription
-                <textarea name="name" rows="8" cols="80"></textarea>
-              </label>
 
-            </div>
-
-          </div>
-
-          <div class="row">
-            <div class="column text-right">
-
-              <input type="submit" :value="createForm? 'CREATE':'EDIT'" class="button tiny primary" :disabled="this.saving">
-
-              <input type="submit" :disabled="this.deleting" value="DELETE" class="button tiny alert" v-if="revealLabel === 'Edit'" @click.prevent="deleteService(service)">
-
-              <a href="#" class="button is-link" data-close >cancel</a>
-            </div>
-
-          </div>
-
-
-
-        </form>
-      </div>
-    </div>
-    <!-- <button class="close-button" data-close aria-label="Close modal" type="button">
-      <span aria-hidden="true">&times;</span>
-    </button> -->
+          </form>
   </div>
+
+    </div>
+    </div>
+
 </div>
 </template>
 
@@ -85,6 +103,7 @@
           service: '',
           editForm: false,
           createForm: false,
+          hideForm: true,
           saving: false,
           deleting: false
         }
@@ -101,23 +120,23 @@
           });
         },
         methods: {
-          revealModel(options){
+          revealModal(options){
             this.revealLabel = options;
-            if (this.revealLabel === 'Create'){
+            if (this.revealLabel === 'create'){
               this.name ="";
               this.createForm = true;
               this.editForm = false;
+              this.hideForm = false
             }
 
-            $('#serviceModel').foundation('open');
           },
           saveService(){
             this.saving = true
             axios.post('api/company/'+this.company+ '/service?api_token='+this.user.api_token,this.$data).then((response) =>{
 
               this.name = ''
-              this.saving = false
-              $('#serviceModel').foundation('close');
+              this.saving = false;
+              this.hideForm = true;
               services.$emit('updateServiceList');
               swal({
                   title: 'Great..',
@@ -134,7 +153,7 @@
               this.name = '';
               this.service='';
               this.saving = false;
-              $('#serviceModel').foundation('close');
+              this.hideForm = true
               services.$emit('updateServiceList');
               swal({
                   title: 'Great..',

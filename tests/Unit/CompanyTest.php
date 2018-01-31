@@ -1,15 +1,16 @@
 <?php
+namespace Tests\Unit;
+
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
 use App\Company;
 use App\Hour;
 
 class CompanyTest extends TestCase
 {
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
     /**
      * @test
@@ -53,4 +54,20 @@ class CompanyTest extends TestCase
 
         $this->assertNotEmpty($company->hours()->get());
     }
+
+    /**
+     * @test
+     */
+
+     public function it_add_staff_to_company()
+     {
+
+        $user = factory(User::class)->create();
+        $staff = factory(User::class)->raw();
+        $this->be($user);
+        $company= factory(Company::class)->create(['user_id'=>$user->id]);
+        $company->addStaff($staff);
+        $this->assertEquals('1', $company->staffs()->count());       
+
+     }
 }

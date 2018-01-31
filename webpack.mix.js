@@ -11,8 +11,13 @@ const { mix } = require('laravel-mix');
  |
  */
  mix.autoload({});
- mix.js(['resources/assets/js/app.js','node_modules/foundation-sites/dist/js/foundation.min.js'], 'public/js')
-  .sass('resources/assets/sass/app.scss', 'public/css');
- mix.browserSync({
-    proxy: 'appointment.dev'
- });
+
+var tailwindcss = require('tailwindcss');
+
+mix.postCss('resources/assets/css/main.css', 'public/css', [
+    tailwindcss('./tailwind.js'),
+])
+.js('resources/assets/js/app.js', 'public/js')
+.browserSync({
+    proxy: 'appointment.test'
+});

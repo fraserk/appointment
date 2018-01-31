@@ -1,27 +1,30 @@
 <template>
 
-    <div class="row">
+    <div>
+      <div class="flex flex-wrap md:-mx-2 mt-4">
+        <div class="w-full md:w-1/4 md:px-2 mx-2  md:mx-0" v-for="service in services" :key="service.id">
+          <div class="border sm:rounded bg-white mb-4 ">
+            <div class=" text-md p-4 text-grey-darkest bg-pink-lightest">
+              {{service.name}}
+            </div>
+            <div class=" p-4 text-sm text-grey-dark">
+              <p class="tracking-normal leading-normal">Contrary to popular belief, Lorem Ipsum is not simply random text. 
+                It has roots in a piece of classical Latin literature from 45 BC, 
+                making it over 2000 years old.</p>
+            </div>
+            <div class="flex border-t">
+              <div class="p-2 w-1/2 text-center border-r">
+                $30.00
+              </div>
+              <div class="p-2 w-1/2 text-center">
+                30 Mins 
+              </div>
+            </div>
 
-      <div class="column">
-        <table class="hover table-scroll unstriped">
-          <thead>
-            <tr>
-                <td>Name</td>
-                <td>Duration</td>
-                <td>Price</td>
-                <td>Action</td>
-              </tr>
-          </thead>
-          <tbody>
-            <tr v-for="service in services">
-              <td>{{service.name}}</td>
-              <td>30 Minutes</td>
-              <td>$20</td>
-              <td><button type="button" name="button" class="button small hollow fa-5x" @click.prevent="editService(service)"><i class="fa fa-gear"></i></button></td>
-            </tr>
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
+      
     </div>
 </template>
 

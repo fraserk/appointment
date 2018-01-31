@@ -20,7 +20,7 @@ class createStoreHoursTest extends TestCase
     {
         $user = factory(User::class)->create();
         $this->be($user);
-
+        $service = factory(Service::class)->create();
         $company = factory(Company::class)->create();
         $storeHours[] = factory(Hour::class)->raw(['day_of_week'=>'Mon']);
         $storeHours[] = factory(Hour::class)->raw(['day_of_week'=>'Tue']);

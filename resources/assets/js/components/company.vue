@@ -1,6 +1,11 @@
 <template>
   <div class="">
 
+    <div class="flex flex-wrap">
+      <div class="w-1/3">
+        hi...
+      </div>
+    </div>
     <form @submit.prevent="saveStore">
       <div class="row">
         <div class="columns small-12 large-6">

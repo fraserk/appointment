@@ -7,11 +7,12 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = require('jquery');
+//window.$ = window.jQuery = require('jquery');
 
 //require('bootstrap-sass');
-require('foundation-sites');
-window.swal = require('sweetalert2')
+//require('foundation-sites');
+window.slimselect  = require('slim-select');
+//window.swal = require('sweetalert2')
 window.moment = require('moment');
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces

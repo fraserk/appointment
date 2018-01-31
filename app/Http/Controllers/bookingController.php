@@ -29,6 +29,7 @@ class bookingController extends Controller
     }
     public function show(Service $service)
     {
+
         return View('services.show', compact('service'));
 
         //   $period = $service->timeslots()->whereBetween('period', [
