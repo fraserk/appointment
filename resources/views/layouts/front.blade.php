@@ -27,7 +27,7 @@
           <div class="container mx-auto container-lg">
             <div class="flex py-4 justify-between px-4 md:px-0 items-center">
               <div class="w-1/2 text-lg font-serif text-white font-medium">
-                    <div class="">
+                    <div class="font-">
                       appointy
                     </div>
               </div>
