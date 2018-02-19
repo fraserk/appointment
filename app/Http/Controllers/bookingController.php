@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Service;
 use App\Classes\StoreHours;
+use Carbon\carbon;
 
 class bookingController extends Controller
 {
@@ -17,7 +18,7 @@ class bookingController extends Controller
     {
         $data = $user->with('company.hours', 'company.service')->firstorfail();
 
-        $storeHours = $user->company->hours;
+        $storeHours = $user->schedules;
         $hoursArray = $storeHours->map(function ($item, $key) {
             return [
               str_limit(lcfirst($item['day_of_week']), 3, '')=>[date('H:i', strtotime($item['open_time'])) .'-'.date('H:i', strtotime($item['close_time']))]];
@@ -29,7 +30,7 @@ class bookingController extends Controller
     }
     public function show(Service $service)
     {
-
+        
         return View('services.show', compact('service'));
 
         //   $period = $service->timeslots()->whereBetween('period', [
@@ -39,5 +40,20 @@ class bookingController extends Controller
             //   ->groupBy(function ($date) {
             //       return Carbon::parse($date->period)->format('Y-m-d');
             //   });
+    }
+
+    public function providerSchedule(Service $service, User $user)
+    {
+        //dd(carbon::parse(request('date'))->format('l'));
+        $date = $user->schedules()->where('day_of_week', carbon::parse(request('date'))->format('D'))->first();
+        //dd($date->start);
+        foreach ($user->schedules as $hour) {
+            $start = new \DateTime(request('date') .$date->start);
+            $end = new \Datetime(request('date') .$date->end);
+            $interval = new \DateInterval('PT'.$service->duration .'M');
+            $period = new \DatePeriod($start, $interval, $end);
+
+            return collect($period);
+     }
     }
 }

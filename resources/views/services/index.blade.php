@@ -11,10 +11,9 @@
           </div>
         </div>  
         <!-- <createservices :user="{{auth()->user()}}" :company="{{auth()->user()->company->id}}">
-
         </createservices> -->
 
-        <getservices :user="{{ auth()->user()}}" :company="{{auth()->user()->company->id}}">
+        <getservices :user="{{auth()->user()}}" :company="{{auth()->user()->company->id}}">
         </getservices>
 
 

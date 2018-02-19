@@ -81,5 +81,26 @@ class staffTest extends TestCase
       $this->assertEquals($schedule->fresh()->start, '10:00 am');
     }
 
+    /**
+     * @test
+     */
+    public function it_get_time_slots_for_service_base_on_prvider()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+        $this->be($user);
+        $userCompany = factory(Company::class)->raw(['user_id'=>$user->id]);
+        $staff = factory(User::class)->raw();
+        $company = $user->addCompany($userCompany);
+        $savedStaff = $company->addStaff($staff);
+        $service = $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30]);
+        $service->addWorker($savedStaff);
+        
+        $this->assertTrue($service->workers->contains($savedStaff));
+
+        $response = $this->GET("/service/{$service->id}/provider/{$savedStaff->id}/?date=".\Carbon\carbon::now()->format('Y-m-d'));
+        $response->assertStatus(200);
+    }
+
 
 }

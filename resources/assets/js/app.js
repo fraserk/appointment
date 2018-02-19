@@ -20,7 +20,8 @@ Vue.component('getservices', require('./components/get-services.vue'));
 Vue.component('company', require('./components/company.vue'));
 Vue.component('storehours', require('./components/store-hours.vue'));
 Vue.component('update-schedule', require('./components/update-schedule.vue'));
-Vue.component('appointmentcalendar', require('./components/appointment-calendar.vue'));
+Vue.component('book-provider', require('./components/book-provider.vue'));
+// Vue.component('appointmentcalendar', require('./components/appointment-calendar.vue'));
 
 Vue.filter('formatTime',function(value){
   return moment(value, "HH:mm:ss").format("hh:mm A");

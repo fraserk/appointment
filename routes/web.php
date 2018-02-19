@@ -22,6 +22,7 @@ Route::get('/services', 'backendController@services')->name('services');
 Route::get('/settings', 'backendController@settings')->name('settings');
 Route::get('/appointment/{user}', 'bookingController@index')->name('booking');
 Route::get('/service/{service}/', 'bookingController@show')->name('show.service');
+Route::get('/service/{service}/provider/{user}','bookingController@providerSchedule');
 
 Route::prefix('backend')->group(function(){
     route::get('/services/create','serviceController@create')->name('service.create');

@@ -41,7 +41,6 @@ class Service extends Model
 
     public function addWorker($workers)
     {
-
         $this->workers()->sync($workers);
         return $this;
     }

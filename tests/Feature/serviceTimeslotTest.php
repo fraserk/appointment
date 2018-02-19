@@ -40,4 +40,5 @@ class serviceTimeslotTest extends TestCase
         $response = $this->GET("api/company/{$company->id}/service/{$service->id}?api_token={$user->api_token}&date=".Carbon\carbon::now()->format('Y-m-d'));
         $response->assertStatus(200);
     }
+
 }

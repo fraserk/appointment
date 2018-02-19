@@ -11,7 +11,7 @@ window._ = require('lodash');
 
 //require('bootstrap-sass');
 //require('foundation-sites');
-window.slimselect  = require('slim-select');
+// window.slimselect  = require('slim-select');
 //window.swal = require('sweetalert2')
 window.moment = require('moment');
 /**

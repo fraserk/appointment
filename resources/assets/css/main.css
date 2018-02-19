@@ -13,6 +13,18 @@
  */
 @tailwind preflight;
 
+.input-field{
+        @apply .w-full .shadow .text-sm .appearance-none .border .bg-grey-lightest .text-grey-darker .py-2 .px-2 .my-2 h-12;
+    }
+
+label{
+    @apply .text-sm .font-semibold .tracking-wide;
+}
+.btn-default{
+    @apply .bg-blue .py-2 .px-4 .border .text-grey-lighter .rounded  .shadow;
+    
+}
+
 /**
  * Here you would add any of your custom component classes; stuff that you'd
  * want loaded *before* the utilities so that the utilities could still
@@ -40,7 +52,7 @@
  * See: https://github.com/tailwindcss/tailwindcss/issues/53#issuecomment-341413622
  */
 @tailwind utilities;
-@import "~slim-select/dist/slimselect.css";
+/* @import "~slim-select/dist/slimselect.css"; */
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.

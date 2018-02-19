@@ -1,9 +1,8 @@
 @extends('layouts.front')
   @section('content')
 
-
-        <appointmentcalendar :company="{{ auth()->user()->company}}" :user="{{ auth()->user()}}" >
-        </appointmentcalendar>
+        <book-provider :company="{{ $service->company}}"></book-provider>
+        {{--    --}}
 
 
   @endsection

@@ -39,6 +39,7 @@ class User extends Authenticatable
 
     public function addSchedule($schedule)
     {
+      
       $this->schedules()->createMany($schedule);
     }
 
@@ -61,43 +62,43 @@ class User extends Authenticatable
          return [
           "schedule" =>  [
             [
-              'day_of_week'=> 'Monday',
+              'day_of_week'=> 'Mon',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true
               ],
             [
-              'day_of_week'=> 'Tuesday',
+              'day_of_week'=> 'Tues',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true
               ],
             [
-              'day_of_week'=> 'Wednesday',
+              'day_of_week'=> 'Wed',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true
               ],
             [
-              'day_of_week'=> 'Thursday',
+              'day_of_week'=> 'Thur',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true
               ],
             [
-              'day_of_week'=> 'Friday',
+              'day_of_week'=> 'Fri',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true
               ],
             [
-              'day_of_week'=> 'Saturday',
+              'day_of_week'=> 'Sat',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true
               ],
             [
-              'day_of_week'=> 'Sunday',
+              'day_of_week'=> 'Sun',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true

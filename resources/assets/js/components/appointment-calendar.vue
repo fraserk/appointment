@@ -1,49 +1,20 @@
 <template >
   <div class="">
-    <div class="flex flex-wrap -mx-2 mt-4">
-      <div class="mx-2 md:mx-0 w-full md:w-1/3 px-2">
-        <div class="rounded border">
-          <div class=" flex  items-center bg-white p-4 text-white w-full rounded-t  h-16 justify-between">
-            <span class="text-grey-darkest font-semibold text-md">Select a Provider</span>
-            <span class="text-grey-darker font-bold">$45.00</span>
-          </div>
-
-          <div class="p-4 bg-white">
-            <p class="leading-normal tracking-normal antialiased text-grey-dark text-sm">
-              Slect a provder from the list below to view the available appointments.
-            </p>
-
-            <div class="flex flex-wrap">
-              <div class="w-full">
-                <div class=" flex  bg-white border border-l-8  border-grey-lighter p-4 mb-4 mt-4 hover:border-grey-dark cursor-pointer" v-for="staff in staffs">
-                  <div class="flex flex-wrap w-full items-center">
-                    <div class="w-1/3">
-                      <span class="rounded-full h-12 w-12 flex items-center justify-center bg-orange">KF</span>
-                    </div>
-                    <div class="w-2/3">
-                      <span class="text-sm text-grey-darker font-semibold">{{staff.name}}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-2/3 px-2">
-        <div class="bg-white rounded border">
+    <div class="flex flex-wrap -mx-2 ">
+      <div class="w-full px-2">
+        <div class="bg-white rounded border" >
           <div class="flex rounded-t w-full h-16 items-center p-4 text-sm justify-center border-b bg-blue-dark ">
             <span class="flex font-bold text-white">Schedule An Appointment</span>
 
           </div>
-          <div class=" flex my-4 bg-blue-lightest border-t border-b">
+          <div class=" flex my-4 bg-blue-lightest border-t border-b" v-if="!timeSelect">
             <div class="flex items-center justify-end  w-1/3">
               <span class=" "><a @click.prevent="subtractWeek" >Prev</a></span>
             </div>
             <div class=" flex w-full  w-1/3">
-              <div class="flex-auto  text-center mt-4 mb-4" v-for="(value, index) in 7">
+              <div class="flex-auto  text-center mt-4 mb-4" v-for="(value, index) in 7" :key="value.id">
 
-                <a href="#" class ="no-underline"@click.prevent="getTimeslots(weeklyCalendar(index).format('YYYY-MM-DD'))">
+                <a href="#" class="no-underline" @click.prevent="getTimeslots(weeklyCalendar(index).format('YYYY-MM-DD'))">
                   <div class="">
                     <span class="block text-lg text-grey-darkest font-bold mb-2">{{weeklyCalendar(index).format('ddd')}}</span>
                     <span class="block text-xs">{{weeklyCalendar(index).format('MM/DD/YY')}}</span>
@@ -63,14 +34,21 @@
           </div>
           <hr>
 
-          <div class="">
+          <div class="" v-if="!timeSelect">
+            <div class="flex">
+              <div class="w-full text-center font-semibold text-md uppercase">
+               Available Time
 
-              <div class="row">
-                <div class="large-1 columns" v-for="time in timeslots">
-                  {{timeslot(time.date)}}
+              </div>
+            </div>
+                
+              <div class="flex flex-wrap" >
+                <div class="border p-2 w-24 m-2 text-grey-darkest text-center hover:bg-grey-lighter"  v-for="time in timeslots" :key="time.id">
+                  <span @click.prevent="getBookForm(time)"> {{timeslot(time.date)}}</span>
                 </div>
               </div>
           </div>
+          <book-confirm :serviceinfo="booking" v-if="timeSelect"></book-confirm>
         </div>
       </div>
     </div>
@@ -78,14 +56,25 @@
 </template>
 
 <script>
+import bookConfirm from "./booking-confirm.vue";
 export default {
-props: ['company','user'],
+components:{
+  bookConfirm
+},
+props: ['provider','service'],
   data(){
     return{
       timeslots: {},
       today:moment(),
-      staffs : this.company.staffs,
+      bookService: this.service,
+      user: this.provider.id,
       weekstart: moment(),
+      timeSelect: false,
+      booking:{
+        service: this.service,
+        provider: this.provider.id,
+        time: null
+      }
 
     }
   },
@@ -115,11 +104,15 @@ props: ['company','user'],
       },
       getTimeslots(date){
         //console.log(date);
-        axios.get(`/api/company/${this.user.company.id}/service/${this.company.service['0'].id}?api_token=${this.user.api_token}&date=${date}`,this.$data).then((response)=>{
+        axios.get(`/service/${this.bookService}/provider/${this.user}?date=${date}`).then((response)=>{
         this.$set(this.$data,'timeslots',response.data);
 
 
         });
+      },
+      getBookForm(time){
+          this.timeSelect=true;
+          this.booking.time = time;
       }
   }
 }

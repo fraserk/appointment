@@ -29,6 +29,27 @@ class staffTest extends TestCase
 
     }
 
+    /** 
+     * @test
+     */
+
+     public function it_get_a_staff_daily_schedule_per_attach_service()
+     {
+       $this->withExceptionHandling();
+       $user = factory(User::class)->create();
+       $this->be($user);
+       $schedule = factory(Schedule::class)->raw();
+       $user->addSchedule($schedule);
+       $company = factory(Company::class)->create();
+       $service = $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30]);
+       $service->addWorker($user);
+       
+       $this->assertEquals('1',$service->workers()->count());
+
+
+
+     }
+
     /**
      *
      * @test
