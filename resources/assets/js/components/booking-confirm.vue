@@ -6,15 +6,15 @@
         </div>
         <div class="px-4 py-4">
             <label for="">Name
-                <input type="text" class="input-field" >
+                <input type="text" class="input-field" v-model="booking.customer_name">
             </label>
             <label for="">Email
-                <input type="text" class="input-field" >
+                <input type="text" class="input-field" v-model="booking.email">
             </label>
             <label for="">Phone
-                <input type="text" class="input-field" >
+                <input type="text" class="input-field" v-model="booking.phone">
             </label>
-            <button class="btn-default hover:bg-blue-lighter">book</button>
+            <button class="btn-default hover:bg-blue-lighter" @click.prevent="save">book</button>
         </div>
     </div>
 </template>
@@ -25,9 +25,25 @@
         data(){
             return{
                 booking: {
-                    when: moment(this.serviceinfo.time['date'])
+                    when: moment(this.serviceinfo.time['date']),
+                    customer_name: null,
+                    email: null,
+                    phone: null,
+                    service_id: this.serviceinfo.service,
+                    staff_id: this.serviceinfo.provider
+
                 }
 
+            }
+        },
+        methods:{
+            save(){
+                let url = `/service/${this.booking.service_id}/provider/${this.booking.staff_id}`;
+                //`api/company/${this.company}/service?api_token=${this.user.api_token}`
+                console.log(url);
+                axios.post(url, this.data).then((response)=>{
+
+                });
             }
         }
     };

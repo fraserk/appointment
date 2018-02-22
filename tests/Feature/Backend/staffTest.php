@@ -78,7 +78,7 @@ class staffTest extends TestCase
       ]);
 
       $response->assertStatus(200);
-      $this->assertEquals($schedule->fresh()->start, '10:00 am');
+      $this->assertEquals($schedule->fresh()->start, '10:00 AM');
     }
 
     /**

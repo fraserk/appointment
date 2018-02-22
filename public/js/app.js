@@ -17613,7 +17613,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(134);
-module.exports = __webpack_require__(188);
+module.exports = __webpack_require__(191);
 
 
 /***/ }),
@@ -48956,7 +48956,7 @@ var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(181)
 /* template */
-var __vue_template__ = __webpack_require__(182)
+var __vue_template__ = __webpack_require__(190)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -49000,7 +49000,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__appointment_calendar_vue__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__appointment_calendar_vue__ = __webpack_require__(182);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__appointment_calendar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__appointment_calendar_vue__);
 //
 //
@@ -49068,152 +49068,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-wrap -mx-2 mt-4" }, [
-    _c("div", { staticClass: "mx-2 md:mx-0 w-full md:w-1/3 px-2" }, [
-      _c("div", { staticClass: "rounded border" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "p-4 bg-white" }, [
-          _c(
-            "p",
-            {
-              staticClass:
-                "leading-normal tracking-normal antialiased text-grey-dark text-sm"
-            },
-            [
-              _vm._v(
-                "\n          Slect a provder from the list below to view the available appointments.\n        "
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "flex flex-wrap" }, [
-            _c(
-              "div",
-              { staticClass: "w-full" },
-              _vm._l(_vm.providers, function(provider) {
-                return _c(
-                  "div",
-                  {
-                    key: provider.key,
-                    staticClass:
-                      " flex  bg-white border border-l-8  border-grey-lighter p-4 mb-4 mt-4 hover:border-grey-dark cursor-pointer"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "flex flex-wrap w-full items-center",
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            _vm.ShowAvailability(provider)
-                          }
-                        }
-                      },
-                      [
-                        _vm._m(1, true),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "w-2/3" }, [
-                          _c(
-                            "span",
-                            {
-                              staticClass:
-                                "text-sm text-grey-darker font-semibold"
-                            },
-                            [_vm._v(_vm._s(provider.name))]
-                          )
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              })
-            )
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "w-2/3 px-2" },
-      [
-        _vm.showCalendar
-          ? _c("appointment-calendar", {
-              attrs: { provider: _vm.selectedProvider, service: _vm.service }
-            })
-          : _vm._e()
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          " flex  items-center bg-white p-4 text-white w-full rounded-t  h-16 justify-between"
-      },
-      [
-        _c("span", { staticClass: "text-grey-darkest font-semibold text-md" }, [
-          _vm._v("Select a Provider")
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "text-grey-darker font-bold" }, [
-          _vm._v("$45.00")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-1/3" }, [
-      _c(
-        "span",
-        {
-          staticClass:
-            "rounded-full h-12 w-12 flex items-center justify-center bg-orange"
-        },
-        [_vm._v("KF")]
-      )
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-71d837e4", module.exports)
-  }
-}
-
-/***/ }),
-/* 183 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(184)
+  __webpack_require__(183)
 }
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(186)
+var __vue_script__ = __webpack_require__(185)
 /* template */
-var __vue_template__ = __webpack_require__(187)
+var __vue_template__ = __webpack_require__(189)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -49252,13 +49116,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 184 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(185);
+var content = __webpack_require__(184);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -49278,7 +49142,7 @@ if(false) {
 }
 
 /***/ }),
-/* 185 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)(false);
@@ -49292,12 +49156,12 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 186 */
+/* 185 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__booking_confirm_vue__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__booking_confirm_vue__ = __webpack_require__(186);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__booking_confirm_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__booking_confirm_vue__);
 //
 //
@@ -49419,7 +49283,231 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(187)
+/* template */
+var __vue_template__ = __webpack_require__(188)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\booking-confirm.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4ee3dd76", Component.options)
+  } else {
+    hotAPI.reload("data-v-4ee3dd76", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
 /* 187 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['serviceinfo'],
+    data: function data() {
+        return {
+            booking: {
+                when: moment(this.serviceinfo.time['date']),
+                customer_name: null,
+                email: null,
+                phone: null,
+                service_id: this.serviceinfo.service,
+                staff_id: this.serviceinfo.provider
+
+            }
+
+        };
+    },
+
+    methods: {
+        save: function save() {
+            var url = '/service/' + this.booking.service_id + '/provider/' + this.booking.staff_id;
+            //`api/company/${this.company}/service?api_token=${this.user.api_token}`
+            console.log(url);
+            axios.post(url, this.data).then(function (response) {});
+        }
+    }
+});
+
+/***/ }),
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "flex flex-wrap" }, [
+    _c("div", { staticClass: "w-full p-4" }, [
+      _vm._v("\n        Your booking is for  "),
+      _c("span", { staticClass: "bg-teal-light px-2" }, [
+        _vm._v(_vm._s(_vm.booking.when.format("MM/DD/YYYY")))
+      ]),
+      _vm._v(" @ "),
+      _c("span", { staticClass: " px-2 bg-teal-light" }, [
+        _vm._v(_vm._s(_vm.booking.when.format("hh:mm A")))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "px-4 py-4" }, [
+      _c("label", { attrs: { for: "" } }, [
+        _vm._v("Name\n            "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.booking.customer_name,
+              expression: "booking.customer_name"
+            }
+          ],
+          staticClass: "input-field",
+          attrs: { type: "text" },
+          domProps: { value: _vm.booking.customer_name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.booking, "customer_name", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("label", { attrs: { for: "" } }, [
+        _vm._v("Email\n            "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.booking.email,
+              expression: "booking.email"
+            }
+          ],
+          staticClass: "input-field",
+          attrs: { type: "text" },
+          domProps: { value: _vm.booking.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.booking, "email", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("label", { attrs: { for: "" } }, [
+        _vm._v("Phone\n            "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.booking.phone,
+              expression: "booking.phone"
+            }
+          ],
+          staticClass: "input-field",
+          attrs: { type: "text" },
+          domProps: { value: _vm.booking.phone },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.booking, "phone", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn-default hover:bg-blue-lighter",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.save($event)
+            }
+          }
+        },
+        [_vm._v("book")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4ee3dd76", module.exports)
+  }
+}
+
+/***/ }),
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -49633,122 +49721,92 @@ if (false) {
 }
 
 /***/ }),
-/* 188 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(193)
-/* template */
-var __vue_template__ = __webpack_require__(194)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\booking-confirm.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4ee3dd76", Component.options)
-  } else {
-    hotAPI.reload("data-v-4ee3dd76", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 193 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['serviceinfo'],
-    data: function data() {
-        return {
-            booking: {
-                when: moment(this.serviceinfo.time['date'])
-            }
-
-        };
-    }
-});
-
-/***/ }),
-/* 194 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-wrap" }, [
-    _c("div", { staticClass: "w-full p-4" }, [
-      _vm._v("\n        Your booking is for  "),
-      _c("span", { staticClass: "bg-teal-light px-2" }, [
-        _vm._v(_vm._s(_vm.booking.when.format("MM/DD/YYYY")))
-      ]),
-      _vm._v(" @ "),
-      _c("span", { staticClass: " px-2 bg-teal-light" }, [
-        _vm._v(_vm._s(_vm.booking.when.format("hh:mm A")))
+  return _c("div", { staticClass: "flex flex-wrap -mx-2 mt-4" }, [
+    _c("div", { staticClass: "mx-2 md:mx-0 w-full md:w-1/3 px-2" }, [
+      _c("div", { staticClass: "rounded border" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "p-4 bg-white" }, [
+          _c(
+            "p",
+            {
+              staticClass:
+                "leading-normal tracking-normal antialiased text-grey-dark text-sm"
+            },
+            [
+              _vm._v(
+                "\n          Slect a provder from the list below to view the available appointments.\n        "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex flex-wrap" }, [
+            _c(
+              "div",
+              { staticClass: "w-full" },
+              _vm._l(_vm.providers, function(provider) {
+                return _c(
+                  "div",
+                  {
+                    key: provider.key,
+                    staticClass:
+                      " flex  bg-white border border-l-8  border-grey-lighter p-4 mb-4 mt-4 hover:border-grey-dark cursor-pointer"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "flex flex-wrap w-full items-center",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.ShowAvailability(provider)
+                          }
+                        }
+                      },
+                      [
+                        _vm._m(1, true),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "w-2/3" }, [
+                          _c(
+                            "span",
+                            {
+                              staticClass:
+                                "text-sm text-grey-darker font-semibold"
+                            },
+                            [_vm._v(_vm._s(provider.name))]
+                          )
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              })
+            )
+          ])
+        ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    _c(
+      "div",
+      { staticClass: "w-2/3 px-2" },
+      [
+        _vm.showCalendar
+          ? _c("appointment-calendar", {
+              attrs: { provider: _vm.selectedProvider, service: _vm.service }
+            })
+          : _vm._e()
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
@@ -49756,25 +49814,36 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "px-4 py-4" }, [
-      _c("label", { attrs: { for: "" } }, [
-        _vm._v("Name\n            "),
-        _c("input", { staticClass: "input-field", attrs: { type: "text" } })
-      ]),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "" } }, [
-        _vm._v("Email\n            "),
-        _c("input", { staticClass: "input-field", attrs: { type: "text" } })
-      ]),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "" } }, [
-        _vm._v("Phone\n            "),
-        _c("input", { staticClass: "input-field", attrs: { type: "text" } })
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn-default hover:bg-blue-lighter" }, [
-        _vm._v("book")
-      ])
+    return _c(
+      "div",
+      {
+        staticClass:
+          " flex  items-center bg-white p-4 text-white w-full rounded-t  h-16 justify-between"
+      },
+      [
+        _c("span", { staticClass: "text-grey-darkest font-semibold text-md" }, [
+          _vm._v("Select a Provider")
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "text-grey-darker font-bold" }, [
+          _vm._v("$45.00")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-1/3" }, [
+      _c(
+        "span",
+        {
+          staticClass:
+            "rounded-full h-12 w-12 flex items-center justify-center bg-orange"
+        },
+        [_vm._v("KF")]
+      )
     ])
   }
 ]
@@ -49783,9 +49852,15 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4ee3dd76", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-71d837e4", module.exports)
   }
 }
+
+/***/ }),
+/* 191 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

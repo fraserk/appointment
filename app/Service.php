@@ -34,6 +34,11 @@ class Service extends Model
     {
         return  $this->belongsTo(Company::class);
     }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
     public function workers()
     {
         return  $this->belongsToMany(User::class,'service_user','user_id','service_id');
@@ -44,7 +49,11 @@ class Service extends Model
         $this->workers()->sync($workers);
         return $this;
     }
-
+    public function AddBooking($booking)
+    {
+        $this->bookings()->create($booking);
+        return $this;
+    }
     public function addTimeSlot($company)
     {
         foreach ($company->hours as $hour) {

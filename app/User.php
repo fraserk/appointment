@@ -62,43 +62,43 @@ class User extends Authenticatable
          return [
           "schedule" =>  [
             [
-              'day_of_week'=> 'Mon',
+              'day_of_week'=> 'Monday',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true
               ],
             [
-              'day_of_week'=> 'Tues',
+              'day_of_week'=> 'Tuesday',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true
               ],
             [
-              'day_of_week'=> 'Wed',
+              'day_of_week'=> 'Wednesday',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true
               ],
             [
-              'day_of_week'=> 'Thur',
+              'day_of_week'=> 'Thursday',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true
               ],
             [
-              'day_of_week'=> 'Fri',
+              'day_of_week'=> 'Friday',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true
               ],
             [
-              'day_of_week'=> 'Sat',
+              'day_of_week'=> 'Saturday',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true
               ],
             [
-              'day_of_week'=> 'Sun',
+              'day_of_week'=> 'Sunday',
               'start' => ('9:00 am'),
               'end'=> ('5:00 pm'),
               'is_open' => true

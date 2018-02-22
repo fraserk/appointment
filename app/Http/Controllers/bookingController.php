@@ -41,12 +41,17 @@ class bookingController extends Controller
             //       return Carbon::parse($date->period)->format('Y-m-d');
             //   });
     }
+    public function store(Service $service, User $user)
+    {
+        $service->addBooking(request()->all());
+        return response('booing save', 200);
+    }
 
     public function providerSchedule(Service $service, User $user)
     {
         //dd(carbon::parse(request('date'))->format('l'));
-        $date = $user->schedules()->where('day_of_week', carbon::parse(request('date'))->format('D'))->first();
-        //dd($date->start);
+        $date = $user->schedules()->where('day_of_week', carbon::parse(request('date'))->format('l'))->first();
+       // dd(carbon::parse(request('date'))->format('l'));
         foreach ($user->schedules as $hour) {
             $start = new \DateTime(request('date') .$date->start);
             $end = new \Datetime(request('date') .$date->end);
