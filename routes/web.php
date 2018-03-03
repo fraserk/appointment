@@ -17,10 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'backendController@index');
 Route::get('/services', 'backendController@services')->name('services');
 Route::get('/settings', 'backendController@settings')->name('settings');
-Route::get('/appointment/{user}', 'bookingController@index')->name('booking');
+Route::get('/{company}/booking', 'companyController@show')->name('company.show');
 Route::get('/service/{service}/', 'bookingController@show')->name('show.service');
 Route::get('/service/{service}/provider/{user}','bookingController@providerSchedule');
 Route::post('/service/{service}/provider/{user}','bookingController@store');

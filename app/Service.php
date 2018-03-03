@@ -54,6 +54,12 @@ class Service extends Model
         $this->bookings()->create($booking);
         return $this;
     }
+
+    // public function getStartAttribute($value)
+    // {
+
+    //     return  $value->format('YYYY-mm-dd H:');
+    // }
     public function addTimeSlot($company)
     {
         foreach ($company->hours as $hour) {

@@ -22,4 +22,17 @@ class UserCompanyTest extends TestCase
         $this->assertDatabaseHas('companies', ['name'=> 'Barber']);
         $response->assertStatus(201);
     }
+
+    /** 
+     * @test
+     */
+     public function can_get_company_booking_page()
+     {
+         $owner = factory(User::class)->create();
+         $company = factory(Company::class)->raw();
+         $savedCompany = $owner->addCompany($company);
+
+        $response = $this->get(route('company.show',$savedCompany));
+        $response->assertStatus(200);
+     } 
 }

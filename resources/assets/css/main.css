@@ -21,9 +21,44 @@ label{
     @apply .text-sm .font-semibold .tracking-wide;
 }
 .btn-default{
-    @apply .bg-blue .py-2 .px-4 .border .text-grey-lighter .rounded  .shadow;
+    @apply .bg-blue .py-2 .px-4  .text-grey-lighter   .shadow;
     
 }
+.fc{
+    @apply   .font-sans .mb-8 ;
+}
+.fc-toolbar{
+    @apply .bg-teal-lightest;
+}
+
+
+.fc .fc-header-toolbar h2{
+        @apply text-lg .text-grey-darkest ;
+}
+.fc-header-toolbar{
+    @apply .p-2;
+}
+.fc-widget-header{
+    @apply  .text-grey-darker .border-0  .uppercase .text-xs  .font-semibold .py-6;
+}
+
+.fc-row tr th {
+    @apply .border-0 .text-right pr-2 .text-sm;
+}
+.fc-header-container{
+    @apply .border-0;
+}
+
+.fc-view-container  .fc-widget-content{
+    @apply  .border-grey-light .rounded .bg-white .text-grey-dark  
+}
+table .fc-head tr td{
+    @apply .border-grey-light .bg-white .pr-2 .pr-2
+}
+.fc-ltr .fc-basic-view .fc-day-top .fc-day-number{
+    @apply .pr-2 .font-semibold
+}
+
 
 /**
  * Here you would add any of your custom component classes; stuff that you'd

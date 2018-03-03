@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Carbon\carbon;
 class backendController extends Controller
 {
     public function __construct()
@@ -11,8 +11,25 @@ class backendController extends Controller
         $this->user = request()->user();
         $this->middleware('auth');
     }
+
+    public function index()
+    {
+        $ProviderAppointments = auth()->user()->getAppointments();
+        $appointments = $ProviderAppointments->map(function($item,$key)
+        {
+            return [
+                'title' => $item->service->name .' - ' .$item->customer_name ,
+				'allDay' => false,
+				'start' =>  $item->when->toAtomString(),
+ 				'end'=> $item->when->addMinutes($item->service->duration)->toAtomString()
+            ];
+        });
+        //dd($appointments->toarray());
+        return view('home',compact('appointments'));
+    }
     public function services()
     {
+        
         return View('services.index');
     }
 

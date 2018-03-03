@@ -33,7 +33,6 @@
               </div>
               <div class="w-1/2 text-right text-grey-lighter font-normal text-sm invisible md:visible ">
                 <span class="mr-2">kimfraser@gmail.com</span>
-                <span class="mr-2"><a class="no-underline text-grey-lighter" href="{{ route('booking',auth()->user()) }}">Booking Page</a> </span>
                 <span class="mr-2"><a class="no-underline text-grey-lighter" href="{{ route('schedule.create') }}">Settings</a> </span>
                  <a class="no-underline text-grey-lighter"href="{{ url('/logout') }}"
                     onclick="event.preventDefault();

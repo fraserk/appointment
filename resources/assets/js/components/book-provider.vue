@@ -1,4 +1,5 @@
-<template>    
+<template>
+<div class="container container-lg mx-auto">
     <div class="flex flex-wrap -mx-2 mt-4">
       <div class="mx-2 md:mx-0 w-full md:w-1/3 px-2">
         <div class="rounded border">
@@ -33,17 +34,18 @@
         <appointment-calendar :provider="selectedProvider" :service="service" v-if="showCalendar">  </appointment-calendar>
       </div>
     </div>
+  </div>    
 </template>
 
 <script>
 import appointmentCalendar from './appointment-calendar.vue';
 export default{
-    components: {
-        appointmentCalendar
+  components: {
+    appointmentCalendar
     },
     props:['company'],
      data(){
-         return{
+       return{
              providers: this.company.staffs,
              selectedProvider: null,
              showCalendar:null,

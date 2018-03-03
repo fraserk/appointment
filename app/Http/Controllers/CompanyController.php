@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Company;
+use App\Classes\StoreHours;
+use Carbon\carbon;
 
-class CompanyController extends Controller
+class companyController extends Controller
 {
     public function __construct()
     {
         $this->user = request()->user();
+        //$this->middleware(['auth']);
     }
 
     public function index()
@@ -31,9 +35,17 @@ class CompanyController extends Controller
     }
 
 
-    public function show($user, $company)
+    public function show(Company $company)
     {
-        return User::find($user)->firstorfail()->company;
+        $storeHours = $company->hours;
+        $hoursArray = $storeHours->map(function ($item, $key) {
+            return [
+              str_limit(lcfirst($item['day_of_week']), 3, '')=>[date('H:i', strtotime($item['open_time'])) .'-'.date('H:i', strtotime($item['close_time']))]];
+        });
+        $hours = $hoursArray->collapse()->toarray();
+        $store_hours = new StoreHours($hours);
+        return View ('companies.show', compact('company','store_hours'));
+        //return User::find($user)->firstorfail()->company;
     }
 
 

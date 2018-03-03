@@ -21,6 +21,7 @@ Vue.component('company', require('./components/company.vue'));
 Vue.component('storehours', require('./components/store-hours.vue'));
 Vue.component('update-schedule', require('./components/update-schedule.vue'));
 Vue.component('book-provider', require('./components/book-provider.vue'));
+Vue.component('calendar', require('./components/calendar.vue'));
 // Vue.component('appointmentcalendar', require('./components/appointment-calendar.vue'));
 
 Vue.filter('formatTime',function(value){

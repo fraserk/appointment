@@ -40,8 +40,8 @@
             save(){
                 let url = `/service/${this.booking.service_id}/provider/${this.booking.staff_id}`;
                 //`api/company/${this.company}/service?api_token=${this.user.api_token}`
-                console.log(url);
-                axios.post(url, this.data).then((response)=>{
+                console.log(this.booking);
+                axios.post(url, this.booking).then((response)=>{
 
                 });
             }

@@ -37,6 +37,10 @@ class User extends Authenticatable
       return $this->hasMany(Schedule::class,'staff_id');
     }
 
+    public function bookings(){
+      return $this->hasMany(Booking::class,'staff_id');
+    }
+
     public function addSchedule($schedule)
     {
       
@@ -55,6 +59,10 @@ class User extends Authenticatable
         $company = $this->company()->create($request);
         //$company->addStoreHours($this->defaultStoreHours());
         return $company;
+    }
+    public function getAppointments()
+    {
+      return   $this->bookings()->with(['Provider','Service'])->get();
     }
 
     private function defaultStoreHours()
