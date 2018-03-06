@@ -25,7 +25,7 @@ class Company extends Model
     public function addService($request)
     {
         $service = $this->service()->create($request);
-        $service->addTimeSlot(auth()->user()->company);
+        //$service->addTimeSlot(auth()->user()->company);
         return $service;
     }
 
@@ -43,11 +43,12 @@ class Company extends Model
 
     public function addStoreHours($storeHours)
     {
-        foreach ($storeHours as $hours) {
+      
+        foreach ($storeHours['schedule'] as $hours) {
             $this->hours()->create([
               'day_of_week'=>$hours['day_of_week'],
-              'start' => \DateTime::createFromFormat('H:i A', $hours['start']),
-              'end'=> \DateTime::createFromFormat('H:i A', $hours['end']),
+              'open_time' => \DateTime::createFromFormat('H:i A', $hours['start']),
+              'close_time'=> \DateTime::createFromFormat('H:i A', $hours['end']),
               'is_open'=> $hours['is_open']
             ]);
         }

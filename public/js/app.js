@@ -59791,7 +59791,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -59903,7 +59902,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59956,30 +59955,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     bookConfirm: __WEBPACK_IMPORTED_MODULE_0__booking_confirm_vue___default.a
   },
-  props: ['provider', 'service'],
+  props: ["provider", "service"],
   data: function data() {
     return {
       timeslots: {},
@@ -59993,7 +59975,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         provider: this.provider.id,
         time: null
       }
-
     };
   },
   mounted: function mounted() {},
@@ -60005,27 +59986,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     addWeek: function addWeek() {
-
-      this.weekstart = moment(this.weekstart).add(1, 'week');
+      this.weekstart = moment(this.weekstart).add(1, "week");
       return this.weeklyCalendar();
     },
     subtractWeek: function subtractWeek() {
-      this.weekstart = moment(this.weekstart).subtract(1, 'week');
+      this.weekstart = moment(this.weekstart).subtract(1, "week");
       return this.weeklyCalendar();
     },
     weeklyCalendar: function weeklyCalendar(n) {
-      return moment(this.weekstart).add(n, 'days');
+      return moment(this.weekstart).add(n, "days");
     },
 
     timeslot: function timeslot(slot) {
-      return moment(slot).format('hh:mm A');
+      return moment(slot).format("hh:mm A");
     },
     getTimeslots: function getTimeslots(date) {
       var _this = this;
 
       //console.log(date);
-      axios.get('/service/' + this.bookService + '/provider/' + this.user + '?date=' + date).then(function (response) {
-        _this.$set(_this.$data, 'timeslots', response.data);
+      axios.get("/service/" + this.bookService + "/provider/" + this.user + "?date=" + date).then(function (response) {
+        _this.$set(_this.$data, "timeslots", response.data);
       });
     },
     getBookForm: function getBookForm(time) {
@@ -60109,6 +60089,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['serviceinfo'],
@@ -60146,106 +60128,109 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "flex flex-wrap" }, [
-    _c("div", { staticClass: "w-full p-4" }, [
-      _vm._v("\n        Your booking is for  "),
-      _c("span", { staticClass: "bg-teal-light px-2" }, [
-        _vm._v(_vm._s(_vm.booking.when.format("MM/DD/YYYY")))
-      ]),
-      _vm._v(" @ "),
-      _c("span", { staticClass: " px-2 bg-teal-light" }, [
-        _vm._v(_vm._s(_vm.booking.when.format("hh:mm A")))
+    _c("div", { staticClass: "w-full" }, [
+      _c("div", { staticClass: "bg-white border rounded p-4" }, [
+        _vm._v("\n\n        Your booking is for  "),
+        _c("span", { staticClass: "bg-teal-light " }, [
+          _vm._v(_vm._s(_vm.booking.when.format("MM/DD/YYYY")))
+        ]),
+        _vm._v(" @ "),
+        _c("span", { staticClass: "  bg-teal-light" }, [
+          _vm._v(_vm._s(_vm.booking.when.format("hh:mm A")))
+        ]),
+        _vm._v(" "),
+        _c("div", {}, [
+          _c("label", { attrs: { for: "" } }, [
+            _vm._v("Name\n            "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.booking.customer_name,
+                  expression: "booking.customer_name"
+                }
+              ],
+              staticClass: "input-field",
+              attrs: { type: "text" },
+              domProps: { value: _vm.booking.customer_name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.booking, "customer_name", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "" } }, [
+            _vm._v("Email\n            "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.booking.email,
+                  expression: "booking.email"
+                }
+              ],
+              staticClass: "input-field",
+              attrs: { type: "text" },
+              domProps: { value: _vm.booking.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.booking, "email", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "" } }, [
+            _vm._v("Phone\n            "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.booking.phone,
+                  expression: "booking.phone"
+                }
+              ],
+              staticClass: "input-field",
+              attrs: { type: "text" },
+              domProps: { value: _vm.booking.phone },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.booking, "phone", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "hover:bg-blue-light shadow bg-blue   py-2 px-4 text-white font-semibold  no-underline rounded text-xs",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.save($event)
+                }
+              }
+            },
+            [_vm._v("book")]
+          )
+        ])
       ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "px-4 py-4" }, [
-      _c("label", { attrs: { for: "" } }, [
-        _vm._v("Name\n            "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.booking.customer_name,
-              expression: "booking.customer_name"
-            }
-          ],
-          staticClass: "input-field",
-          attrs: { type: "text" },
-          domProps: { value: _vm.booking.customer_name },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.booking, "customer_name", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "" } }, [
-        _vm._v("Email\n            "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.booking.email,
-              expression: "booking.email"
-            }
-          ],
-          staticClass: "input-field",
-          attrs: { type: "text" },
-          domProps: { value: _vm.booking.email },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.booking, "email", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "" } }, [
-        _vm._v("Phone\n            "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.booking.phone,
-              expression: "booking.phone"
-            }
-          ],
-          staticClass: "input-field",
-          attrs: { type: "text" },
-          domProps: { value: _vm.booking.phone },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.booking, "phone", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn-default hover:bg-blue-lighter",
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              _vm.save($event)
-            }
-          }
-        },
-        [_vm._v("book")]
-      )
     ])
   ])
 }
@@ -60267,203 +60252,163 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _c("div", { staticClass: "flex flex-wrap -mx-2 " }, [
-      _c("div", { staticClass: "w-full px-2" }, [
-        _c(
-          "div",
-          { staticClass: "bg-white rounded border" },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            !_vm.timeSelect
-              ? _c(
+  return _c("div", { staticClass: "flex flex-wrap " }, [
+    _c(
+      "div",
+      { staticClass: "w-full" },
+      [
+        !_vm.timeSelect
+          ? _c(
+              "div",
+              { staticClass: " flex bg-red-lightest  rounded shadow" },
+              [
+                _c(
                   "div",
                   {
-                    staticClass: " flex my-4 bg-blue-lightest border-t border-b"
+                    staticClass:
+                      "flex items-center   w-12 bg-grey-lighter border-r px-2 hover:bg-grey cursor-pointer rounded-l",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        _vm.subtractWeek($event)
+                      }
+                    }
                   },
                   [
                     _c(
+                      "span",
+                      { staticClass: "text-xs font-semibold uppercase " },
+                      [_vm._v("Prev")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: " flex w-full md:flex-1" },
+                  _vm._l(7, function(value, index) {
+                    return _c(
                       "div",
-                      { staticClass: "flex items-center justify-end  w-1/3" },
+                      {
+                        key: value.id,
+                        staticClass: "flex-auto  text-center mt-4 mb-4"
+                      },
                       [
-                        _c("span", { staticClass: " " }, [
-                          _c(
-                            "a",
-                            {
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                  _vm.subtractWeek($event)
-                                }
-                              }
-                            },
-                            [_vm._v("Prev")]
-                          )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: " flex w-full  w-1/3" },
-                      _vm._l(7, function(value, index) {
-                        return _c(
-                          "div",
+                        _c(
+                          "a",
                           {
-                            key: value.id,
-                            staticClass: "flex-auto  text-center mt-4 mb-4"
+                            staticClass: "no-underline",
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.getTimeslots(
+                                  _vm.weeklyCalendar(index).format("YYYY-MM-DD")
+                                )
+                              }
+                            }
                           },
                           [
                             _c(
-                              "a",
+                              "span",
                               {
-                                staticClass: "no-underline",
-                                attrs: { href: "#" },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    _vm.getTimeslots(
-                                      _vm
-                                        .weeklyCalendar(index)
-                                        .format("YYYY-MM-DD")
-                                    )
-                                  }
-                                }
+                                staticClass:
+                                  "block text-md text-grey-darkest mb-2"
                               },
                               [
-                                _c("div", {}, [
-                                  _c(
-                                    "span",
-                                    {
-                                      staticClass:
-                                        "block text-lg text-grey-darkest font-bold mb-2"
-                                    },
-                                    [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm
-                                            .weeklyCalendar(index)
-                                            .format("ddd")
-                                        )
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("span", { staticClass: "block text-xs" }, [
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm
-                                          .weeklyCalendar(index)
-                                          .format("MM/DD/YY")
-                                      )
-                                    )
-                                  ])
-                                ])
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.weeklyCalendar(index).format("ddd")
+                                  )
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              { staticClass: "block text-xs font-semibold" },
+                              [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.weeklyCalendar(index).format("MMM-DD")
+                                  )
+                                )
                               ]
                             )
                           ]
                         )
-                      })
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "w-1/3 flex items-center" }, [
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              _vm.addWeek($event)
-                            }
-                          }
-                        },
-                        [_vm._v("Next")]
-                      )
-                    ])
+                      ]
+                    )
+                  })
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex items-center  w-12 bg-grey-lighter border-l  px-2 hover:bg-grey cursor-pointer rounded-r",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        _vm.addWeek($event)
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "span",
+                      { staticClass: "text-xs font-semibold uppercase " },
+                      [_vm._v("Next")]
+                    )
                   ]
                 )
-              : _vm._e(),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            !_vm.timeSelect
-              ? _c("div", {}, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "flex flex-wrap" },
-                    _vm._l(_vm.timeslots, function(time) {
-                      return _c(
-                        "div",
-                        {
-                          key: time.id,
-                          staticClass:
-                            "border p-2 w-24 m-2 text-grey-darkest text-center hover:bg-grey-lighter"
-                        },
-                        [
-                          _c(
-                            "span",
-                            {
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                  _vm.getBookForm(time)
-                                }
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.timeSelect
+          ? _c("div", {}, [
+              _c(
+                "div",
+                { staticClass: "flex flex-wrap -mx-2" },
+                _vm._l(_vm.timeslots, function(time) {
+                  return _c("div", { key: time.id, staticClass: " p-2" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "border w-24 text-grey-darkest text-center hover:bg-grey-lighter py-2 rounded  bg-white text-sm"
+                      },
+                      [
+                        _c(
+                          "span",
+                          {
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.getBookForm(time)
                               }
-                            },
-                            [_vm._v(" " + _vm._s(_vm.timeslot(time.date)))]
-                          )
-                        ]
-                      )
-                    })
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.timeSelect
-              ? _c("book-confirm", { attrs: { serviceinfo: _vm.booking } })
-              : _vm._e()
-          ],
-          1
-        )
-      ])
-    ])
+                            }
+                          },
+                          [_vm._v(" " + _vm._s(_vm.timeslot(time.date)))]
+                        )
+                      ]
+                    )
+                  ])
+                })
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.timeSelect
+          ? _c("book-confirm", { attrs: { serviceinfo: _vm.booking } })
+          : _vm._e()
+      ],
+      1
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex rounded-t w-full h-16 items-center p-4 text-sm justify-center border-b bg-blue-dark "
-      },
-      [
-        _c("span", { staticClass: "flex font-bold text-white" }, [
-          _vm._v("Schedule An Appointment")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex" }, [
-      _c(
-        "div",
-        { staticClass: "w-full text-center font-semibold text-md uppercase" },
-        [_vm._v("\n             Available Time\n\n            ")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -60481,87 +60426,85 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container container-lg mx-auto" }, [
-    _c("div", { staticClass: "flex flex-wrap -mx-2 mt-4" }, [
-      _c("div", { staticClass: "mx-2 md:mx-0 w-full md:w-1/3 px-2" }, [
-        _c("div", { staticClass: "rounded border" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "p-4 bg-white" }, [
-            _c(
-              "p",
-              {
-                staticClass:
-                  "leading-normal tracking-normal antialiased text-grey-dark text-sm"
-              },
-              [
-                _vm._v(
-                  "\r\n              Slect a provder from the list below to view the available appointments.\r\n            "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex flex-wrap" }, [
-              _c(
-                "div",
-                { staticClass: "w-full" },
-                _vm._l(_vm.providers, function(provider) {
-                  return _c(
-                    "div",
-                    {
-                      key: provider.key,
-                      staticClass:
-                        " flex  bg-white border border-l-8  border-grey-lighter p-4 mb-4 mt-4 hover:border-grey-dark cursor-pointer"
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "flex flex-wrap w-full items-center",
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              _vm.ShowAvailability(provider)
-                            }
-                          }
-                        },
-                        [
-                          _vm._m(1, true),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "w-2/3" }, [
-                            _c(
-                              "span",
-                              {
-                                staticClass:
-                                  "text-sm text-grey-darker font-semibold"
-                              },
-                              [_vm._v(_vm._s(provider.name))]
-                            )
-                          ])
-                        ]
-                      )
-                    ]
-                  )
-                })
+  return _c("div", { staticClass: "flex flex-wrap -mx-2 " }, [
+    _c("div", { staticClass: " md:mx-0 w-full md:w-1/3 px-2" }, [
+      _c("div", { staticClass: "rounded border" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "p-4 bg-white" }, [
+          _c(
+            "p",
+            {
+              staticClass:
+                "leading-normal tracking-normal antialiased text-grey-dark text-sm"
+            },
+            [
+              _vm._v(
+                "\n          Slect a provder from the list below to view the available appointments.\n        "
               )
-            ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex flex-wrap" }, [
+            _c(
+              "div",
+              { staticClass: "w-full" },
+              _vm._l(_vm.providers, function(provider) {
+                return _c(
+                  "div",
+                  {
+                    key: provider.key,
+                    staticClass:
+                      " flex  bg-white border border-l-8  border-grey-lighter p-4 mb-4 mt-4 hover:border-grey-dark cursor-pointer"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "flex flex-wrap w-full items-center",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.ShowAvailability(provider)
+                          }
+                        }
+                      },
+                      [
+                        _vm._m(1, true),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "w-2/3" }, [
+                          _c(
+                            "span",
+                            {
+                              staticClass:
+                                "text-sm text-grey-darker font-semibold"
+                            },
+                            [_vm._v(_vm._s(provider.name))]
+                          )
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              })
+            )
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "w-2/3 px-2" },
-        [
-          _vm.showCalendar
-            ? _c("appointment-calendar", {
-                attrs: { provider: _vm.selectedProvider, service: _vm.service }
-              })
-            : _vm._e()
-        ],
-        1
-      )
-    ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "md:w-2/3 px-2 mt-4 md:mt-0" },
+      [
+        _vm.showCalendar
+          ? _c("appointment-calendar", {
+              attrs: { provider: _vm.selectedProvider, service: _vm.service }
+            })
+          : _vm._e()
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [

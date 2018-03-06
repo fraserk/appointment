@@ -1,7 +1,7 @@
 <template>
-<div class="container container-lg mx-auto">
-    <div class="flex flex-wrap -mx-2 mt-4">
-      <div class="mx-2 md:mx-0 w-full md:w-1/3 px-2">
+
+    <div class="flex flex-wrap -mx-2 ">
+      <div class=" md:mx-0 w-full md:w-1/3 px-2">
         <div class="rounded border">
           <div class=" flex  items-center bg-white p-4 text-white w-full rounded-t  h-16 justify-between">
             <span class="text-grey-darkest font-semibold text-md">Select a Provider</span>
@@ -30,11 +30,10 @@
           </div>
         </div>
       </div>
-      <div class="w-2/3 px-2">
+      <div class="md:w-2/3 px-2 mt-4 md:mt-0">
         <appointment-calendar :provider="selectedProvider" :service="service" v-if="showCalendar">  </appointment-calendar>
       </div>
-    </div>
-  </div>    
+    </div> 
 </template>
 
 <script>

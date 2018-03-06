@@ -31,13 +31,13 @@ class ServiceController extends Controller
         $company = Company::where('user_id',auth()->user()->id)->firstorfail();
         $service= $company->addService(request()->only(['name','price','duration']));
         $service->addWorker($data->all());
-        return redirect(route('services'));
+        return response('Service Created Successully',200);
     }
 
     public function update($service)
     {
         $Userservice = Service::findServiceById($service)->firstorfail()->update(request()->only(['name']));
-        return redirect(route('services'));
+        return response('service updated', 200);
     }
 
     public function show(Company $company, Service $service)

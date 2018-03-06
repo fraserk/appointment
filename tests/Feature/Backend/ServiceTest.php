@@ -11,18 +11,7 @@ class ServiceTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * 
-     * @test
-     */
-    public function can_view_create_service_view()
-    {
-        $this->withoutExceptionHandling();
-        $user = factory(User::class)->create();
-        $this->be($user);
-        $this->get(route('services.create'))->assertViewIs('service.create');
-        
-    }
+
     /**
      * 
      * @test

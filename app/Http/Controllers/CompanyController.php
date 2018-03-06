@@ -37,14 +37,14 @@ class companyController extends Controller
 
     public function show(Company $company)
     {
-        $storeHours = $company->hours;
-        $hoursArray = $storeHours->map(function ($item, $key) {
-            return [
-              str_limit(lcfirst($item['day_of_week']), 3, '')=>[date('H:i', strtotime($item['open_time'])) .'-'.date('H:i', strtotime($item['close_time']))]];
-        });
-        $hours = $hoursArray->collapse()->toarray();
-        $store_hours = new StoreHours($hours);
-        return View ('companies.show', compact('company','store_hours'));
+        //$storeHours = $company->hours;
+        // $hoursArray = $storeHours->map(function ($item, $key) {
+        //     return [
+        //       str_limit(lcfirst($item['day_of_week']), 3, '')=>[date('H:i', strtotime($item['open_time'])) .'-'.date('H:i', strtotime($item['close_time']))]];
+        // });
+        //$hours = $hoursArray->collapse()->toarray();
+       // $store_hours = new StoreHours($hours);
+        return View ('companies.show', compact('company'));
         //return User::find($user)->firstorfail()->company;
     }
 

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Service;
-      use App\Classes\StoreHours;
-   use Carbon\carbon;
+use App\Classes\StoreHours;
+use Carbon\carbon;
 
 class bookingController extends Controller
 {
@@ -13,12 +13,13 @@ class bookingController extends Controller
     {
         $this->middleware('auth')->except(['show', 'providerSchedule', 'store']);
     }
-    
-   
+
+
     public function show(Service $service)
     {
+        //dd($service->company);
         return View('services.show', compact('service'));
- 
+
     }
     public function store(Service $service, User $user)
     {
@@ -29,9 +30,8 @@ class bookingController extends Controller
 
     public function providerSchedule(Service $service, User $user)
     {
-        //dd(carbon::parse(request('date'))->format('l'));
+
         $date = $user->schedules()->where('day_of_week', carbon::parse(request('date'))->format('l'))->first();
-       // dd(carbon::parse(request('date'))->format('l'));
         foreach ($user->schedules as $hour) {
             $start = new \DateTime(request('date') . $date->start);
             $end = new \Datetime(request('date') . $date->end);

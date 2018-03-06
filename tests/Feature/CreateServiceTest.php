@@ -9,6 +9,7 @@ use App\User;
 use App\Service;
 use App\Company;
 use App\Hour;
+use App\Schedule;
 
 class CreateServiceTest extends TestCase
 {
@@ -21,19 +22,13 @@ class CreateServiceTest extends TestCase
         $user = factory(User::class)->create();
         $this->be($user);
         $company = factory(Company::class)->create(['user_id'=>$user->id]);
-        $storeHours[] = factory(Hour::class)->raw(['day_of_week'=>'Monday','company_id'=>$company->id]);
-        $storeHours[] = factory(Hour::class)->raw(['day_of_week'=>'Tuesday','company_id'=>$company->id]);
-        $storeHours[] = factory(Hour::class)->raw(['day_of_week'=>'Wednesday','company_id'=>$company->id]);
-        $storeHours[] = factory(Hour::class)->raw(['day_of_week'=>'Thursday','company_id'=>$company->id]);
-        $storeHours[] = factory(Hour::class)->raw(['day_of_week'=>'Friday','company_id'=>$company->id]);
-        $storeHours[] = factory(Hour::class)->raw(['day_of_week'=>'Saturday','company_id'=>$company->id]);
-        $storeHours[] = factory(Hour::class)->raw(['day_of_week'=>'Sunday','company_id'=>$company->id]);
+        $storeHours = factory(Schedule::class)->raw();
         $company->addStoreHours($storeHours);
 
         $response = $this->JSON('POST', "api/company/{$company->id}/service?api_token={$user->api_token}", ['name'=>'Hair Cut','price'=>20,'duration'=>30]);
 
         $this->assertDatabaseHas('services', ['name'=>'Hair Cut']);
-        $response->assertStatus(201);
+        $response->assertStatus(200);
     }
 
 
@@ -70,6 +65,6 @@ class CreateServiceTest extends TestCase
         //$updateService =  $userService->updateService(['name'=>'Baldie']);
         //$newlyUpdate = Service::findServiceById($service->id)->firstorfail();
         $this->assertDatabaseHas('services', ['name'=>'Baldie']);
-        $response->assertStatus(201);
+        $response->assertStatus(200);
     }
 }

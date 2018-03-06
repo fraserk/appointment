@@ -42,7 +42,7 @@ $factory->define(App\Schedule::class, function (Faker $faker) {
           'is_open' => true
         ],
         [
-          'day_of_week'=> 'Sunsunday',
+          'day_of_week'=> 'Sunday',
           'start' => ('9:00 am'),
           'end'=> ('5:00 pm'),
           'is_open' => true
