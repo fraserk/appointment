@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\BetaInviteMail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,13 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::post('/invite', function(){
+    //dd(request()->all());
+    Mail::to('info@picblocks.com','kf')
+            ->send(new BetaInviteMail(request()->only('email')));
+            return back()->with('message','Thanks you. We will send out an invite to you soon..');
 });
 
 Auth::routes();

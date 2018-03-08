@@ -5,91 +5,39 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>PicBlock</title>
+    <link rel="stylesheet" href="css/main.css">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
+    <body class="font-sans border-t-8 border-orange bg-blue-darker">
+        <div class="container container-lg mx-auto ">
+            <header>
+                <div class="w-full py-4 items-align flex">
+                    <span class="ml-4 text-grey-lightest tracking-wide text-2xl"><span class="text-orange font-bold">pic</span>block</span>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+            </header>
+            <div class="flex flex-wrap items-center h-screen -mx-2 px-4">
+                <div class="w-full md:px-2 md:w-1/2 ">              
+                        
+                        <p class="text-2xl  tracking-wide text-grey-lighter mb-4">Book More Appointment's. </p>
+                        <p class="leading-normal text-grey-light mb-4">
+                            Save time and money while delighting your customers. With picblock, your customer's schedule's online booking's and receive reminder's notification's with ease. Accept online payment for appointment and booking. You can use picblock to book an appointment for a service or class.
+                        </p>
+                    
+                        <form action="/invite" method="post">
+                        <div class="flex ">
+                            <a href="" class="p-4 bg-blue-darkest shadow h-12 w-28 mr-8 rounded no-underline text-grey-lightest hover:bg-green-light text-xs tracking-wide">VIEW DEMO</a>
+                                <input type="text"  name="email" placeholder="Email Address" class="h-12 p-4  w-1/2  border border-blue border-r-0 shadow bg-grey-lightest text-grey-dark rounded-l text-xs"> <button class="bg-blue py-2 px-2  shadow text-grey-lightest text-xs hover:bg-blue-light rounded-r tracking-wide">GET BETA INVITE</button>
+                                {{csrf_field()}}
+                            </div>
+                        </form>
+                        
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="w-full md:px-2 md:w-1/2 ">
+                    <img src="images/pb.png" alt="" class="shadow-lg">
                 </div>
-            </div>
+            </div>   
         </div>
     </body>
 </html>
