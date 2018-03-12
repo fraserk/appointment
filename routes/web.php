@@ -1,6 +1,6 @@
 <?php
 
-use App\Mail\BetaInviteMail;
+use App\Mail\betaInviteMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ Route::post('/invite', function(){
         ]
         );
     Mail::to('info@picblocks.com','picblocks')
-            ->send(new BetaInviteMail(request()->only('email')));
+            ->send(new betaInviteMail(request()->only('email')));
             return back()->with('message','Thank you.  A invite will be sent to you shortly.');
 });
 
