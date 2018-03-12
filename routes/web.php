@@ -14,14 +14,18 @@ use App\Mail\BetaInviteMail;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return View('static.welcome');
 });
 
 Route::post('/invite', function(){
-    //dd(request()->all());
-    Mail::to('info@picblocks.com','kf')
+    request()->validate(
+        [
+            'email'=>'required|email'
+        ]
+        );
+    Mail::to('info@picblocks.com','picblocks')
             ->send(new BetaInviteMail(request()->only('email')));
-            return back()->with('message','Thanks you. We will send out an invite to you soon..');
+            return back()->with('message','Thank you.  A invite will be sent to you shortly.');
 });
 
 Auth::routes();

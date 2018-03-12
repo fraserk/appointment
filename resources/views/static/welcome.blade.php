@@ -27,9 +27,15 @@
                     
                         <form action="/invite" method="post">
                         <div class="flex ">
-                            <a href="" class="p-4 bg-blue-darkest shadow h-12 w-28 mr-8 rounded no-underline text-grey-lightest hover:bg-green-light text-xs tracking-wide">VIEW DEMO</a>
+                            <a href="/1/booking" class="p-4 bg-blue-darkest shadow h-12 w-28 mr-8 rounded no-underline text-grey-lightest hover:bg-green-light text-xs tracking-wide">VIEW DEMO</a>
+                            {{csrf_field()}}
                                 <input type="text"  name="email" placeholder="Email Address" class="h-12 p-4  w-1/2  border border-blue border-r-0 shadow bg-grey-lightest text-grey-dark rounded-l text-xs"> <button class="bg-blue py-2 px-2  shadow text-grey-lightest text-xs hover:bg-blue-light rounded-r tracking-wide">GET BETA INVITE</button>
-                                {{csrf_field()}}
+                            </div>
+                            <div class="text-center">
+                                <span class="text-red-light ">{{$errors->first('email')}}</span>
+                                @if(session('message'))
+                                    <span class="text-white">{{session('message')}}</span>
+                                @endif
                             </div>
                         </form>
                         

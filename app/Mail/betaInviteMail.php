@@ -28,7 +28,7 @@ class betaInviteMail extends Mailable
      */
     public function build()
     {
-        return $this->from('info@picblocks.com','pb')->view('emails.beta')
+        return $this->from('info@picblocks.com','picblocks')->view('emails.beta')
                     ->with([
                         'email' => $this->email['email']
                     ]);
