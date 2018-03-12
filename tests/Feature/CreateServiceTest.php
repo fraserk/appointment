@@ -25,7 +25,7 @@ class CreateServiceTest extends TestCase
         $storeHours = factory(Schedule::class)->raw();
         $company->addStoreHours($storeHours);
 
-        $response = $this->JSON('POST', "api/company/{$company->id}/service?api_token={$user->api_token}", ['name'=>'Hair Cut','price'=>20,'duration'=>30]);
+        $response = $this->JSON('POST', "api/company/{$company->id}/service?api_token={$user->api_token}", ['name'=>'Hair Cut','price'=>20,'duration'=>30, 'detail' => 'best service']);
 
         $this->assertDatabaseHas('services', ['name'=>'Hair Cut']);
         $response->assertStatus(200);
@@ -55,7 +55,7 @@ class CreateServiceTest extends TestCase
         $user = factory(User::class)->create();
         $this->be($user);
         $company = factory(Company::class)->create(['user_id'=>$user->id]);
-        $service = $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30]);
+        $service = $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30, 'detail' => 'best service']);
       
         $response = $this->JSON('PATCH', "api/company/{$company->id}/service/{$service->id}?api_token={$user->api_token}", [
         'name' => 'Baldie'

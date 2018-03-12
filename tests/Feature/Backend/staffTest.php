@@ -93,7 +93,7 @@ class staffTest extends TestCase
         $staff = factory(User::class)->raw();
         $company = $user->addCompany($userCompany);
         $savedStaff = $company->addStaff($staff);
-        $service = $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30]);
+        $service = $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30, 'detail' => 'best service']);
         $service->addWorker($savedStaff);
         
         $this->assertTrue($service->workers->contains($savedStaff));

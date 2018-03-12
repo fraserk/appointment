@@ -18,7 +18,7 @@ class ServiceTest extends TestCase
         $user = factory(User::class)->create();
         $this->be($user);
         $company = factory(Company::class)->create(['user_id'=>$user->id]);
-        $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30]);
+        $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30, 'detail' => 'best service']);
         $this->assertTrue($company->service->contains('name', 'Hair Cut'));
     }
 
@@ -30,8 +30,8 @@ class ServiceTest extends TestCase
         $user = factory(User::class)->create();
         $this->be($user);
         $company = factory(Company::class)->create(['user_id'=>$user->id]);
-        $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30]);
-        $company->addService(['name'=>'Blow Dry','price'=>20,'duration'=>30]);
+        $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30,'detail'=>'best service']);
+        $company->addService(['name'=>'Blow Dry','price'=>20,'duration'=>30,'detail'=>'best service']);
         $service = Service::getServiceByCompany($company)->get();
         $this->assertEquals('2', $service->count());
     }
@@ -47,7 +47,7 @@ class ServiceTest extends TestCase
         $user2 = factory(User::class)->create();        
         $this->be($admin);
         $company = factory(Company::class)->create(['user_id' => $admin->id]);
-        $service = $company->addService(['name' => 'Hair Cut', 'price' => 20, 'duration' => 30]);
+        $service = $company->addService(['name' => 'Hair Cut', 'price' => 20, 'duration' => 30,'detail'=>'best service']);
         $service->addWorker([$user1->id,$user2->id]);
         $this->assertEquals('2',$service->workers()->count());
      }

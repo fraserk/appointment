@@ -60091,32 +60091,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['serviceinfo'],
-    data: function data() {
-        return {
-            booking: {
-                when: moment(this.serviceinfo.time['date']),
-                customer_name: null,
-                email: null,
-                phone: null,
-                service_id: this.serviceinfo.service,
-                staff_id: this.serviceinfo.provider
+  props: ["serviceinfo"],
+  data: function data() {
+    return {
+      booking: {
+        when: moment(this.serviceinfo.time["date"]),
+        customer_name: null,
+        email: null,
+        phone: null,
+        service_id: this.serviceinfo.service,
+        staff_id: this.serviceinfo.provider
+      },
+      complete: false
+    };
+  },
 
-            }
+  methods: {
+    save: function save() {
+      var _this = this;
 
-        };
-    },
-
-    methods: {
-        save: function save() {
-            var url = '/service/' + this.booking.service_id + '/provider/' + this.booking.staff_id;
-            //`api/company/${this.company}/service?api_token=${this.user.api_token}`
-            console.log(this.booking);
-            axios.post(url, this.booking).then(function (response) {});
-        }
+      var url = "/service/" + this.booking.service_id + "/provider/" + this.booking.staff_id;
+      //`api/company/${this.company}/service?api_token=${this.user.api_token}`
+      //console.log(this.booking);
+      axios.post(url, this.booking).then(function (response) {
+        _this.complete = true;
+      });
     }
+  }
 });
 
 /***/ }),
@@ -60129,109 +60135,121 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "flex flex-wrap" }, [
     _c("div", { staticClass: "w-full" }, [
-      _c("div", { staticClass: "bg-white border rounded p-4" }, [
-        _vm._v("\n\n        Your booking is for  "),
-        _c("span", { staticClass: "bg-teal-light " }, [
-          _vm._v(_vm._s(_vm.booking.when.format("MM/DD/YYYY")))
-        ]),
-        _vm._v(" @ "),
-        _c("span", { staticClass: "  bg-teal-light" }, [
-          _vm._v(_vm._s(_vm.booking.when.format("hh:mm A")))
-        ]),
-        _vm._v(" "),
-        _c("div", {}, [
-          _c("label", { attrs: { for: "" } }, [
-            _vm._v("Name\n            "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.booking.customer_name,
-                  expression: "booking.customer_name"
-                }
-              ],
-              staticClass: "input-field",
-              attrs: { type: "text" },
-              domProps: { value: _vm.booking.customer_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+      !_vm.complete
+        ? _c("div", { staticClass: "bg-white border rounded p-4" }, [
+            _vm._v("\n\n                Your booking is for  "),
+            _c("span", { staticClass: "bg-teal-light " }, [
+              _vm._v(_vm._s(_vm.booking.when.format("MM/DD/YYYY")))
+            ]),
+            _vm._v(" @ "),
+            _c("span", { staticClass: "  bg-teal-light" }, [
+              _vm._v(_vm._s(_vm.booking.when.format("hh:mm A")))
+            ]),
+            _vm._v(" "),
+            _c("div", {}, [
+              _c("label", { attrs: { for: "" } }, [
+                _vm._v("Name\n                    "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.booking.customer_name,
+                      expression: "booking.customer_name"
+                    }
+                  ],
+                  staticClass: "input-field",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.booking.customer_name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.booking,
+                        "customer_name",
+                        $event.target.value
+                      )
+                    }
                   }
-                  _vm.$set(_vm.booking, "customer_name", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "" } }, [
-            _vm._v("Email\n            "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.booking.email,
-                  expression: "booking.email"
-                }
-              ],
-              staticClass: "input-field",
-              attrs: { type: "text" },
-              domProps: { value: _vm.booking.email },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                })
+              ]),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "" } }, [
+                _vm._v("Email\n                    "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.booking.email,
+                      expression: "booking.email"
+                    }
+                  ],
+                  staticClass: "input-field",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.booking.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.booking, "email", $event.target.value)
+                    }
                   }
-                  _vm.$set(_vm.booking, "email", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("label", { attrs: { for: "" } }, [
-            _vm._v("Phone\n            "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.booking.phone,
-                  expression: "booking.phone"
-                }
-              ],
-              staticClass: "input-field",
-              attrs: { type: "text" },
-              domProps: { value: _vm.booking.phone },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                })
+              ]),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "" } }, [
+                _vm._v("Phone\n                    "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.booking.phone,
+                      expression: "booking.phone"
+                    }
+                  ],
+                  staticClass: "input-field",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.booking.phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.booking, "phone", $event.target.value)
+                    }
                   }
-                  _vm.$set(_vm.booking, "phone", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass:
-                "hover:bg-blue-light shadow bg-blue   py-2 px-4 text-white font-semibold  no-underline rounded text-xs",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.save($event)
-                }
-              }
-            },
-            [_vm._v("book")]
-          )
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "hover:bg-blue-light shadow bg-blue   py-2 px-4 text-white font-semibold  no-underline rounded text-xs",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.save($event)
+                    }
+                  }
+                },
+                [_vm._v("Confirm Booking")]
+              )
+            ])
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _vm.complete
+      ? _c("div", { staticClass: "w-full" }, [
+          _c("p", [_vm._v("Thank you.  You appointment have been saved.")])
         ])
-      ])
-    ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = []

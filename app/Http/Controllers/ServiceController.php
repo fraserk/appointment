@@ -29,7 +29,7 @@ class ServiceController extends Controller
         $staff = collect(request()->only('staff'));
         $data = $staff->collapse();
         $company = Company::where('user_id',auth()->user()->id)->firstorfail();
-        $service= $company->addService(request()->only(['name','price','duration']));
+        $service= $company->addService(request()->only(['name','price','duration','detail']));
         $service->addWorker($data->all());
         return response('Service Created Successully',200);
     }

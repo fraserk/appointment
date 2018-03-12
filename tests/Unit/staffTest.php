@@ -42,7 +42,7 @@ class staffTest extends TestCase
        $schedule = factory(Schedule::class)->raw();
        $user->addSchedule($schedule['schedule']);
        $company = factory(Company::class)->create();
-       $service = $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30]);
+       $service = $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30,'detail'=>'best service']);
        $service->addWorker($user);
        
        $this->assertEquals('1',$service->workers()->count());
