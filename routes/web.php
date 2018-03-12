@@ -28,7 +28,7 @@ Route::post('/invite', function(){
             return back()->with('message','Thank you.  A invite will be sent to you shortly.');
 });
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'backendController@index');
 Route::get('/services', 'backendController@services')->name('services');
