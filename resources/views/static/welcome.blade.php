@@ -18,7 +18,7 @@
                 </div>
             </header>
             <div class="flex flex-wrap items-center h-screen -mx-2 px-4">
-                <div class="w-full md:px-2 md:w-1/2 ">              
+                <div class="w-full lg:px-2 lg:w-1/2 ">              
                         
                         <p class="text-2xl  tracking-wide text-grey-lighter mb-4">Book More Appointment's. </p>
                         <p class="leading-normal text-grey-light mb-4">
@@ -40,7 +40,7 @@
                         </form>
                         
                 </div>
-                <div class="w-full md:px-2 md:w-1/2 ">
+                <div class="w-full lg:px-2 lg:w-1/2 ">
                     <img src="images/pb.png" alt="" class="shadow-lg">
                 </div>
             </div>   
