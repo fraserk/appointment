@@ -39,7 +39,7 @@ Route::get('/service/{service}/provider/{user}','bookingController@providerSched
 Route::post('/service/{service}/provider/{user}','bookingController@store');
 
 Route::prefix('backend')->group(function(){
-    route::get('/services/create','serviceController@create')->name('service.create');
+    route::get('/services/create','ServiceController@create')->name('service.create');
     route::post('/services','ServiceController@store')->name('service.store');
     route::patch('/services/{service}','ServiceController@update')->name('service.update');
 
