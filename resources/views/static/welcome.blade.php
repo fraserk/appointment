@@ -41,7 +41,7 @@
                         
                 </div>
                 <div class="w-full lg:px-2 lg:w-1/2 ">
-                    <img src="images/pb.png" alt="" class="shadow-lg">
+                    <img src="images/pb_ss.png" alt="" class="shadow-lg">
                 </div>
             </div>   
         </div>
