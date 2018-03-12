@@ -40,8 +40,8 @@ Route::post('/service/{service}/provider/{user}','bookingController@store');
 
 Route::prefix('backend')->group(function(){
     route::get('/services/create','serviceController@create')->name('service.create');
-    route::post('/services','serviceController@store')->name('service.store');
-    route::patch('/services/{service}','serviceController@update')->name('service.update');
+    route::post('/services','ServiceController@store')->name('service.store');
+    route::patch('/services/{service}','ServiceController@update')->name('service.update');
 
     Route::get('/{company}/staff', 'staffsController@index')->name('staff.index');
     Route::post('/staff', 'staffsController@store')->name('staff.store');
