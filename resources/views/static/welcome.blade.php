@@ -20,7 +20,7 @@
             <div class="flex flex-wrap items-center h-screen -mx-2 px-4">
                 <div class="w-full lg:px-2 lg:w-1/2 ">              
                         
-                        <p class="text-2xl  tracking-wide text-grey-lighter mb-4">Book More Appointment's. </p>
+                        <p class="text-2xl  tracking-wide text-grey-lighter mb-4">Book More Appointments. </p>
                         <p class="leading-normal text-grey-light mb-4">
                             Save time and money while delighting your customer's. With Picblocks, your customers can schedule online booking's and receive reminder's notification's with ease. Accept online payment for appointment and booking. You can use Picblocks to book an appointment for a service or class.
                         </p>
