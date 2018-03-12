@@ -18,6 +18,7 @@ class CreateServicesTable extends Migration
             $table->integer('company_id')->index();
             $table->string('name');
             $table->string('price');
+            $table->text('detail');
             $table->string('duration');
             $table->timestamps();
         });

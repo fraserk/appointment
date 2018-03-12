@@ -29,7 +29,7 @@
                         <div class="flex w-full mb-2">
                         <div class="w-full md:w-3/4">
                                 <label class="block text-grey-darker text-sm font-semibold mb-2" for="service name">Service Description</label>
-                                <textarea name="descrition" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Service Name">
+                                <textarea name="detail" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Service Name">
                                 </textarea>
                             </div>
                         </div>
