@@ -64,8 +64,8 @@
                                 <div class="w-full md:w-1/2">
                                     <label class="block text-grey-darker text-sm font-semibold mb-2" for="service name">Select Staff/worker</label>
                                     <select class="block appearance-none w-full bg-white  hover:border-greypy-2 pr-8" id="multiple" multiple name="staff[]">
-                                      @foreach ($company->staffs as $staff)
-                                        <option value="{{ $staff->id }}">{{ $staff->name }}</option>
+                                      @foreach ($company->providers as $provider)
+                                        <option value="{{ $provider->id }}">{{ $provider->name }}</option>
                                       @endforeach
 
                                     </select>

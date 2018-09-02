@@ -51,7 +51,13 @@ class Service extends Model
     }
     public function AddBooking($booking)
     {
-        $this->bookings()->create($booking);
+        
+        $period = [
+            'book_from' => \Carbon\carbon::parse($booking['book_from'])->setTimezone('America/New_York'),
+            'book_to' => \Carbon\carbon::parse($booking['book_from'])->addMinutes($this->duration)->setTimezone('America/New_York')
+        ];
+        
+        $this->bookings()->create(array_merge($booking,$period));
         return $this;
     }
 
@@ -60,17 +66,17 @@ class Service extends Model
 
     //     return  $value->format('YYYY-mm-dd H:');
     // }
-    public function addTimeSlot($company)
-    {
-        foreach ($company->hours as $hour) {
-            $start = new \DateTime($hour->day_of_week .$hour->open_time);
-            $end = new \Datetime($hour->day_of_week .$hour->close_time);
-            $interval = new \DateInterval('PT30M');
-            $period = new \DatePeriod($start, $interval, $end);
+    // public function addTimeSlot($company)
+    // {
+    //     foreach ($company->hours as $hour) {
+    //         $start = new \DateTime($hour->day_of_week .$hour->open_time);
+    //         $end = new \Datetime($hour->day_of_week .$hour->close_time);
+    //         $interval = new \DateInterval('PT30M');
+    //         $period = new \DatePeriod($start, $interval, $end);
 
-            foreach ($period as $dt) {
-                $this->timeslots()->create(['period'=>$dt]);
-            }
-        }
-    }
+    //         foreach ($period as $dt) {
+    //             $this->timeslots()->create(['period'=>$dt]);
+    //         }
+    //     }
+    // }
 }

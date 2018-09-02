@@ -9,7 +9,7 @@
                 </span>
                 <ul class="list-reset mt-4 ">
                     <li class="my-2 text-sm"><a href="#" class="no-underline text-grey-darkest hover:text-grey-dark leading-wide">Home</a></li>
-                    <li class="my-2 text-sm"><a href="#" class="no-underline text-grey-darkest hover:text-grey-dark leading-wide"> My Calendar</a></li>
+                <li class="my-2 text-sm"><a href="{{route('calendar')}}" class="no-underline text-grey-darkest hover:text-grey-dark leading-wide"> My Calendar</a></li>
                     <li class="my-2 text-sm"><a href="#" class="no-underline text-grey-darkest hover:text-grey-dark leading-wide">Schedule</a></li>
                     <li class="my-2 text-sm"><a href="#" class="no-underline text-grey-darkest hover:text-grey-dark leading-wide">Booking Page</a></li>
                 </ul>

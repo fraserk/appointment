@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Company;
 
-class staffsController extends Controller
+class providersController extends Controller
 {
     public function __construct()
     {
@@ -13,14 +13,14 @@ class staffsController extends Controller
     }
     public function index(Company $company)
     {
-        return view('staff.index',compact('company'));
+        return view('providers.index',compact('company'));
     }
 
     public function store()
     {
 
       $company = Company::where('user_id', auth()->user()->id)->firstorfail();
-      $company->addStaff(request()->all());
-      return view('staff.index', compact('company'));
+      $company->createProviders(request()->all());
+      return view('providers.index', compact('company'));
     }
 }

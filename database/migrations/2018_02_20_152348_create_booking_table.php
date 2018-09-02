@@ -17,7 +17,8 @@ class CreateBookingTable extends Migration
             $table->increments('id');
             $table->integer('service_id')->unsignedInteger();
             $table->integer('staff_id')->unsignedInteger();
-            $table->datetime('when');
+            $table->datetime('book_from');
+            $table->datetime('book_to');
             $table->string('customer_name');
             $table->string('email');
             $table->string('phone');

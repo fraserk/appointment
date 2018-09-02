@@ -25,9 +25,6 @@ class ServiceTest extends TestCase
         $service = factory(Service::class)->raw();
         $response = $this->post(route('service.store'),$service);
         $this->assertDatabaseHas('services',['name'=>$service['name']]);
-
-
-        
     }
     /**
      * 
@@ -41,9 +38,29 @@ class ServiceTest extends TestCase
         $company = factory(Company::class)->create(['user_id'=>$user->id]);
         $service = factory(Service::class)->create(['company_id' => $company->id]);
         $response = $this->patch(route('service.update',$service),['name'=>'New Name']);
-        $this->assertDatabaseHas('services',['name'=>'New Name']);
-
+        $this->assertDatabaseHas('services',['name'=>'New Name']);       
+    }
+    /**
+     *@test
+     */
+    public function it_get_serive_provider_available_slots()
+    {
+        $this->withoutExceptionHandling();
+        $owner = factory(User::class)->create();
+        $this->be($owner);
+        $staff = factory(User::class)->raw();
+        $company = factory(Company::class)->create(['user_id' => $owner->id]);
+        $service = factory(Service::class)->create(['company_id' => $company->id]);
+        $provider = $company->createProviders($staff);
+        $service->addWorker($provider->id);
+        
+        $response = $this->get(route('provider.schedule',[$service,$provider, 'date' => '2018-06-22']));
+        
+        $response->assertSuccessful();
 
         
+
     }
+    
 }
+

@@ -15,15 +15,29 @@ import { FullCalendar } from 'vue-full-calendar';
   data () {
     return {
 			events: 		
-					this.appointments				
+					this.appointments
+					// [
+						
+					// 	{
+					// 		title  : 'event2',
+					// 		start  : '2018-05-22T12:30:00',
+					// 		end    : '2018-05-22T15:34:00',
+					// 		allDay : false
+					// 	},
+					// 	{
+					// 		title  : 'New Event',
+					// 		start  : '2018-05-22T09:30:00',
+					// 		end    : '2018-05-22T10:34:00',
+					// 		allDay : false
+					// 	}
+						
+					// ]				
 			,
 			config: {
         defaultView: 'month',
 				eventRender: function(event, element) {
-        	console.log(event)
 				},
-				timeFormat: 'h(:mm)p',	
-				weekends: false
+				timeFormat: 'h(:mm)p'
 
       },
     }

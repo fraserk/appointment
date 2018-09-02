@@ -14,7 +14,7 @@ class backendController extends Controller
 
     public function index()
     {
-        $ProviderAppointments = auth()->user()->getAppointments();
+        $ProviderAppointments = auth()->user()->getBookings();
         $appointments = $ProviderAppointments->map(function($item,$key)
         {
             return [

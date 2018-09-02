@@ -24,18 +24,19 @@ class createBookingTest extends TestCase
         $userCompany = factory(Company::class)->raw(['user_id'=>$user->id]);
         $staff = factory(User::class)->raw();
         $company = $user->addCompany($userCompany);
-        $savedStaff = $company->addStaff($staff);
+        $provider = $company->createProviders($staff);
         $service = $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30, 'detail' => 'best service']);
-        $service->addWorker($savedStaff);
+        $service->addWorker($provider);
         
         $booking = [
-            'when'=> '2018-02-17 09:00:00',
+            'book_from' => '2018-02-17 09:00:00',
+            'book_to' => '2018-02-17 09:30:00',
             'customer_name' =>  'Lauren Fraser',
             'email' => 'lauren@gmail.com',
             'phone' => '347-834-0666',
-            'staff_id'=> $savedStaff->id
+            'staff_id'=> $provider->id
         ];
-        $response = $this->json('post',"/service/{$service->id}/provider/{$savedStaff->id}",$booking);
+        $response = $this->json('post',"/service/{$service->id}/provider/{$provider->id}",$booking);
         $response->assertStatus(200);
         $this->assertEquals('1', $service->bookings()->count() );
     }

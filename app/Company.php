@@ -8,7 +8,7 @@ use App\Hour;
 class Company extends Model
 {
     protected $guarded =[];
-    protected $with =['service','staffs'];
+    protected $with =['service','providers'];
 
     public function hours()
     {
@@ -18,7 +18,7 @@ class Company extends Model
     {
         return $this->hasMany(Service::class);
     }
-    public function staffs()
+    public function providers()
     {
         return $this->hasMany(User::class,'company_id');
     }
@@ -29,14 +29,15 @@ class Company extends Model
         return $service;
     }
 
-    public function addStaff($staff)
+    public function createProviders($provider)
     {
-        $staff =  $this->staffs()->create([
-          'name' => $staff['name'],
-          'email' => $staff['email'],
-          'password' => bcrypt($staff['password'])
+        $staff =  $this->providers()->create([
+          'name' => $provider['name'],
+          'email' => $provider['email'],
+          'password' => bcrypt($provider['password'])
         ]);
-        $staff->addSchedule($this->defaultSchedule()['schedule']);
+        $staff->addSchedule($this->defaultSchedule());
+
         return $staff;
     }
 
@@ -67,50 +68,13 @@ class Company extends Model
     private function defaultSchedule()
     {
          return [
-          "schedule" =>  [
-            [
-              'day_of_week'=> 'Monday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-            [
-              'day_of_week'=> 'Tuesday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-            [
-              'day_of_week'=> 'Wednesday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-            [
-              'day_of_week'=> 'Thursday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-            [
-              'day_of_week'=> 'Friday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-            [
-              'day_of_week'=> 'Saturday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-            [
-              'day_of_week'=> 'Sunday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-        ]
+          'opening_hours_mon' => ['08:00', '12:00'],
+          'opening_hours_tue' => ['08:00', '12:00'],
+          'opening_hours_wed' => ['08:00', '12:00'],
+          'opening_hours_thu' => ['08:00', '22:00'],
+          'opening_hours_fri' => ['00:00', '24:00'],
+          'opening_hours_sat' => ['08:00', '12:00'],
+          'opening_hours_sun' => ['08:00', '24:00'],
         ];
     }
 }

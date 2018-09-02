@@ -14,7 +14,7 @@
               Create New Staff
             </div>
             <div class="p-4">
-              <form action="{{route('staff.store')}}" method="post" class="flex flex-wrap appearance-none">
+              <form action="{{route('providers.store')}}" method="post" class="flex flex-wrap appearance-none">
                 {{csrf_field()}}
                  <div class="w-full">
                   <label for="" class="block mb-2 text-sm font-semibold">Employee Name</label>
@@ -39,17 +39,17 @@
       <div class="mx-2 md:mx-0 w-full md:w-2/3 px-2">
 
 
-       @foreach ($company->Staffs as $staff)
+       @foreach ($company->providers as $provider)
          <div class=" flex  bg-white border border-l-8  border-blue-darkest p-4 mb-4">
            <div class="flex flex-wrap w-full items-center">
              <div class="w-1/4">
                <span class="rounded-full h-12 w-12 flex items-center justify-center bg-orange">KF</span>
              </div>
              <div class="w-1/4">
-               <span class="text-sm text-grey-darker font-semibold">{{ $staff->name }}</span>
+               <span class="text-sm text-grey-darker font-semibold">{{ $provider->name }}</span>
              </div>
              <div class="w-1/4">
-               <span class="text-sm text-grey-darker font-semibold">{{ $staff->email }}</span>
+               <span class="text-sm text-grey-darker font-semibold">{{ $provider->email }}</span>
              </div>
              <div class="w-1/4">
                <span class="text-sm text-grey-darker font-semibold">347-834-0666</span>

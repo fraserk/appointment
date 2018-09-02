@@ -40,15 +40,11 @@ class staffTest extends TestCase
        $user = factory(User::class)->create();
        $this->be($user);
        $schedule = factory(Schedule::class)->raw();
-       $user->addSchedule($schedule['schedule']);
+       $user->addSchedule($schedule);
        $company = factory(Company::class)->create();
        $service = $company->addService(['name'=>'Hair Cut','price'=>20,'duration'=>30,'detail'=>'best service']);
-       $service->addWorker($user);
-       
+       $service->addWorker($user);       
        $this->assertEquals('1',$service->workers()->count());
-
-
-
      }
 
     /**

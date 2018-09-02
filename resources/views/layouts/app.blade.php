@@ -62,7 +62,7 @@
             </div>
             @if(Auth()->check())
             <div class="flex -mb-px mr-4">
-              <a href="{{route('staff.index',auth()->user()->company)}}" class=" flex no-underline border-transparent border-b hover:border-grey-dark py-4 text-grey-darker">Staff</a>
+              <a href="{{route('provider.index',auth()->user()->company_id)}}" class=" flex no-underline border-transparent border-b hover:border-grey-dark py-4 text-grey-darker">Staff</a>
             </div>
             @endif
         </div>

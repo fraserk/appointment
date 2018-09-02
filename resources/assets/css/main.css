@@ -5,60 +5,20 @@
  * You can see the styles here:
  * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
  *
- * If using `postcss-import`, you should import this line from it's own file:
+ * If using `postcss-import`, use this import instead:
  *
- * @import "./tailwind-preflight.css";
- *
- * See: https://github.com/tailwindcss/tailwindcss/issues/53#issuecomment-341413622
+ * @import "tailwindcss/preflight";
  */
 @tailwind preflight;
 
-.input-field{
-        @apply .w-full .shadow .text-sm .appearance-none .border .bg-grey-lightest .text-grey-darker .py-2 .px-2 .my-2 h-12;
-    }
-
-label{
-    @apply .text-sm .font-semibold .tracking-wide;
-}
-.btn-default{
-    @apply .bg-blue .py-2 .px-4  .text-grey-lighter   .shadow;
-    
-}
-.fc{
-    @apply   .font-sans .mb-8 ;
-}
-.fc-toolbar{
-    @apply .bg-teal-lightest;
-}
-
-
-.fc .fc-header-toolbar h2{
-        @apply text-lg .text-grey-darkest ;
-}
-.fc-header-toolbar{
-    @apply .p-2;
-}
-.fc-widget-header{
-    @apply  .text-grey-darker .border-0  .uppercase .text-xs  .font-semibold .py-6;
-}
-
-.fc-row tr th {
-    @apply .border-0 .text-right pr-2 .text-sm;
-}
-.fc-header-container{
-    @apply .border-0;
-}
-
-.fc-view-container  .fc-widget-content{
-    @apply  .border-grey-light .rounded .bg-white .text-grey-dark  
-}
-table .fc-head tr td{
-    @apply .border-grey-light .bg-white .pr-2 .pr-2
-}
-.fc-ltr .fc-basic-view .fc-day-top .fc-day-number{
-    @apply .pr-2 .font-semibold
-}
-
+/**
+ * This injects any component classes registered by plugins.
+ *
+ * If using `postcss-import`, use this import instead:
+ *
+ * @import "tailwindcss/components";
+ */
+@tailwind components;
 
 /**
  * Here you would add any of your custom component classes; stuff that you'd
@@ -80,14 +40,12 @@ table .fc-head tr td{
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
  *
- * If using `postcss-import`, you should import this line from it's own file:
+ * If using `postcss-import`, use this import instead:
  *
- * @import "./tailwind-utilities.css";
- *
- * See: https://github.com/tailwindcss/tailwindcss/issues/53#issuecomment-341413622
+ * @import "tailwindcss/utilities";
  */
 @tailwind utilities;
-/* @import "~slim-select/dist/slimselect.css"; */
+
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.

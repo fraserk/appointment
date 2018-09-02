@@ -44,76 +44,43 @@ class User extends Authenticatable
     public function addSchedule($schedule)
     {
       
-      $this->schedules()->createMany($schedule);
+      $this->schedules()->create($schedule);
     }
 
     public function updateSchedule($timeSchedule,$schedule)
     {
         $schedule->update($timeSchedule);
-       //return $schedule;
+       return $schedule;
 
     }
 
     public function addCompany($request)
     {
         $company = $this->company()->create($request);
-        $company->addStoreHours($this->defaultStoreHours());
+        //$company->addStoreHours($this->defaultSchedule());
         return $company;
     }
-    public function getAppointments()
+    public function getBookings()
     {
       return   $this->bookings()->with(['Provider','Service'])->get();
     }
 
-    private function defaultStoreHours()
+    public function getBookingsByDay($date)
     {
-         return [
-          "schedule" =>  [
-            [
-              'day_of_week'=> 'Monday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-            [
-              'day_of_week'=> 'Tuesday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-            [
-              'day_of_week'=> 'Wednesday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-            [
-              'day_of_week'=> 'Thursday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-            [
-              'day_of_week'=> 'Friday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-            [
-              'day_of_week'=> 'Saturday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-            [
-              'day_of_week'=> 'Sunday',
-              'start' => ('9:00 am'),
-              'end'=> ('5:00 pm'),
-              'is_open' => true
-              ],
-        ]
-        ];
+      
+      return $this->bookings()->whereDate('book_from',$date)->get();
     }
 
-
+    public function defaultSchedule()
+    {
+        return [
+            'opening_hours_mon' => ['08:00', '18:00'],
+            'opening_hours_tue' => ['08:00', '18:00'],
+            'opening_hours_wed' => ['08:00', '18:00'],
+            'opening_hours_thur' => ['08:00', '18:00'],
+            'opening_hours_fri' => ['08:00', '18:00'],
+            'opening_hours_sat' => ['08:00', '18:00'],
+            'opening_hours_sun' => ['08:00', '18:00'],
+        ];
+    }
 }

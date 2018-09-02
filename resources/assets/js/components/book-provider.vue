@@ -45,7 +45,7 @@ export default{
     props:['company'],
      data(){
        return{
-             providers: this.company.staffs,
+             providers: this.company.providers,
              selectedProvider: null,
              showCalendar:null,
              service: this.company.service['0'].id

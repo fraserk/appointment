@@ -20,7 +20,7 @@ class schedulesController extends Controller
     public function update(Schedule $schedule)
     {
       
-      return auth()->user()->updateSchedule(request()->only('day_of_week','start','end','is_open'),$schedule);
+      return auth()->user()->updateSchedule(request()->all(),$schedule);
 
     }
 }

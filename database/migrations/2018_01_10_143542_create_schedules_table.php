@@ -16,10 +16,14 @@ class CreateSchedulesTable extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('staff_id')->unsigninterger();
-            $table->string('day_of_week');
-            $table->boolean('is_open');
-            $table->time('start');
-            $table->time('end');
+            $table->json('opening_hours_mon');
+            $table->json('opening_hours_tue');
+            $table->json('opening_hours_wed');
+            $table->json('opening_hours_thu');
+            $table->json('opening_hours_fri');
+            $table->json('opening_hours_sat');
+            $table->json('opening_hours_sun');
+            
             $table->timestamps();
         });
     }

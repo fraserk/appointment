@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     protected $guarded = [];
+    protected $casts = [
+        'opening_hours_mon' =>'array',
+        'opening_hours_tue' =>'array',
+        'opening_hours_wed' =>'array',
+        'opening_hours_thu' =>'array',
+        'opening_hours_fri' =>'array',
+        'opening_hours_sat' =>'array',
+        'opening_hours_sun' =>'array',
+    ];
 
     public function setStartAttribute($value)
     {

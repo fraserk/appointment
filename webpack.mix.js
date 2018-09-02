@@ -18,6 +18,6 @@ mix.postCss('resources/assets/css/main.css', 'public/css', [
     tailwindcss('./tailwind.js'),
 ])
 .js('resources/assets/js/app.js', 'public/js')
-.browserSync({
-    proxy: 'appointment.test'
-});
+    .browserSync({
+        proxy: 'appointment.test'
+    });;

@@ -656,6 +656,7 @@ module.exports = {
     '4': '1rem',
     '6': '1.5rem',
     '8': '2rem',
+    '7': '7rem',
   },
 
 
@@ -838,7 +839,7 @@ module.exports = {
     opacity: ['responsive'],
     overflow: ['responsive'],
     padding: ['responsive'],
-    pointerEvents: ['responsive'],
+    pointerEvents: ['responsive','hover'],
     position: ['responsive'],
     resize: ['responsive'],
     shadows: ['responsive'],

@@ -1,0 +1,54 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\#iamfraserk\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  C:\Users\#iamfraserk\cmder_mini\bin;C:\Users\#iamfraserk\cmder_mini\vendor\conemu-maximus5\ConEmu\Scripts;C:\Users\#iamfraserk\cmder_mini\vendor\conemu-maximus5;C:\Users\#iamfraserk\cmder_mini\vendor\conemu-maximus5\ConEmu;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\tools\ruby23\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\php;C:\ProgramData\ComposerSetup\bin;C:\ProgramData\chocolatey\bin;C:\Users\#iamfraserk\AppData\Roaming\Composer\vendor\bin\phpunit;C:\Program Files\Git\cmd;C:\Users\#iamfraserk\AppData\Roaming\Composer\vendor\bin;C:\Program Files\PuTTY\;C:\Program Files\nodejs\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\HashiCorp\Vagrant\bin;C:\Users\#iamfraserk\ngrok\;;C:\Program Files\Microsoft VS Code\bin;C:\Users\#iamfraserk\AppData\Local\atom\bin;C:\Users\#iamfraserk\AppData\Roaming\Composer\vendor\bin;C:\Users\#iamfraserk\AppData\Local\Microsoft\WindowsApps;C:\Users\\#iamfraserk\AppData\Roaming\Composer\vendor\bin\phpunit;C:\Program Files\Microsoft VS Code\bin;C:\Users\#iamfraserk\AppData\Roaming\npm;C:\Users\#iamfraserk\ngrok\;;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\share\vim\vim74;C:\Users\#iamfraserk\cmder_mini\
+
+Yarn version: 
+  1.3.2
+
+Node version: 
+  8.9.4
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "private": true,
+    "scripts": {
+      "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+      "watch": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+      "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+      "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "devDependencies": {
+      "axios": "^0.17",
+      "babel-preset-stage-2": "^6.24.1",
+      "browser-sync": "^2.24.4",
+      "browser-sync-webpack-plugin": "^1.2.0",
+      "cross-env": "^5.1.5",
+      "jquery": "^3.1.1",
+      "laravel-mix": "^1.0",
+      "lodash": "^4.17.10",
+      "tailwindcss": "^0.6.5",
+      "vue": "^2.5.16",
+      "vue-template-compiler": "^2.5.16"
+    },
+    "dependencies": {
+      "moment": "^2.22.1",
+      "npm": "^5.10.0",
+      "vue-full-calendar": "^2.5.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com registry.yarnpkg.com:443
+      at errnoException (dns.js:50:10)
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)

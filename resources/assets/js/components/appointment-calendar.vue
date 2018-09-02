@@ -26,8 +26,9 @@
           <div class="" v-if="!timeSelect">
               <div class="flex flex-wrap -mx-2" >
                 <div class=" p-2"  v-for="time in timeslots" :key="time.id">
-                  <div class="border w-24 text-grey-darkest text-center hover:bg-grey-lighter py-2 rounded  bg-white text-sm">
-                  <span @click.prevent="getBookForm(time)"> {{timeslot(time.date)}}</span>
+                  <div :class="{ 'bg-red text-white cursor-not-allowed hover:bg-red' : time['Booked']}" class="border w-24 text-grey-darkest text-center hover:bg-grey-lighter py-2 rounded  bg-white text-sm cursor-pointer">
+                  <span @click.prevent="getBookForm(time)" v-if="!time['Booked']"> {{timeslot(time['slot'])}}</span>
+                  <span v-else> {{timeslot(time['slot'])}}</span>
                   </div>
                 </div>
               </div>

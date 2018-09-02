@@ -3,7 +3,7 @@
         <div class="w-full">
             <div class="bg-white border rounded p-4" v-if="!complete">
 
-                    Your booking is for  <span class="bg-teal-light ">{{booking.when.format('MM/DD/YYYY')}}</span> @ <span class="  bg-teal-light">{{booking.when.format('hh:mm A')}}</span> 
+                    <!-- Your booking is for  <span class="bg-teal-light ">{{booking.when.format('MM/DD/YYYY')}}</span> @ <span class="  bg-teal-light">{{booking.when.format('hh:mm A')}}</span>  -->
                 <div class="">
                     <label for="">Name
                         <input type="text" class="input-field" v-model="booking.customer_name">
@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       booking: {
-        when: moment(this.serviceinfo.time["date"]),
+        book_from: moment(this.serviceinfo.time["slot"]),
         customer_name: null,
         email: null,
         phone: null,
