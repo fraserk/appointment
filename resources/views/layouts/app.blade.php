@@ -60,11 +60,11 @@
             <div class="flex -mb-px mr-4">
               <a href="#" class=" flex no-underline border-transparent border-b hover:border-grey-dark py-4 text-grey-darker">Clients</a>
             </div>
-            @if(Auth()->check())
+            {{-- @if(!Auth()->guest())
             <div class="flex -mb-px mr-4">
               <a href="{{route('provider.index',auth()->user()->company_id)}}" class=" flex no-underline border-transparent border-b hover:border-grey-dark py-4 text-grey-darker">Staff</a>
             </div>
-            @endif
+            @endif --}}
         </div>
       </div>
       <div class="container container-lg mx-auto mt-4">

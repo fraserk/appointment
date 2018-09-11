@@ -60,3 +60,13 @@
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
+
+ .input-field{
+     @apply border py-3 px-2 text-xs w-full my-2 rounded .border-grey-light .shadow-inner;
+ }
+ label{
+     @apply tracking-normal font-semibold;
+ }
+ .bg-ocean{
+     background: hsla(285, 31%, 78%, 0.08);
+ }

@@ -1,21 +1,31 @@
 <template>
-    <div class="flex flex-wrap">        
-        <div class="w-full">
-            <div class="bg-white border rounded p-4" v-if="!complete">
+    <div class="flex flex-wrap justify-center">        
+        <div class="w-1/2 bg-ocean shadow border-t-8 border-blue  rounded">
+       
+            <div class=" rounded" v-if="!complete">  
+                <div class="w-full h-32 bg-indigo-lightest mb-4 p-4 shadow">
+                    <span class="flex justify-around font-bold text-lg font-semibold text-grey-darkest mb-8">Confirm Booking!</span>
+                     <div class="flex justify-between">
+                     <span class="text-xs text-grey-darker  ">Date : {{booking.book_from.format('MM/DD/YYYY')}}</span> 
+                     <span class="text-xs text-grey-darker">Time: {{booking.book_from.format('hh:mm A')}}</span> 
 
-                    <!-- Your booking is for  <span class="bg-teal-light ">{{booking.when.format('MM/DD/YYYY')}}</span> @ <span class="  bg-teal-light">{{booking.when.format('hh:mm A')}}</span>  -->
-                <div class="">
-                    <label for="">Name
-                        <input type="text" class="input-field" v-model="booking.customer_name">
-                    </label>
-                    <label for="">Email
-                        <input type="text" class="input-field" v-model="booking.email">
-                    </label>
-                    <label for="">Phone
-                        <input type="text" class="input-field" v-model="booking.phone">
-                    </label>
-                    <button class="hover:bg-blue-light shadow bg-blue   py-2 px-4 text-white font-semibold  no-underline rounded text-xs" @click.prevent="save">Confirm Booking</button>
+                     </div>
                 </div>
+                <div class=" flex flex-wrap">
+                    <div class="w-full p-4"> 
+                        <h4 class="text-normal text-grey-darker mb-2">Contact Information</h4>                       
+                            <input type="text" placeholder="Full Name" class="input-field" v-model="booking.customer_name">                        
+                            <input type="text" placeholder="Email address" class="input-field" v-model="booking.email">                        
+                            <input type="text" placeholder="Phone Number" class="input-field" v-model="booking.phone">
+                        
+                    </div>
+
+                    </div>
+               
+            </div>
+            <div class="p-4 bg-green-lightest">
+                <button class="hover:bg-blue-light shadow bg-blue   py-2 px-4 text-white font-semibold  no-underline rounded text-xs" @click.prevent="save">Confirm Booking</button>
+
             </div>
         </div>
         <div class="w-full" v-if="complete">

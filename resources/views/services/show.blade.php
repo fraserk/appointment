@@ -4,7 +4,7 @@
   @endsection
   @section('content')
 
-        <book-provider :company="{{ $service->company}}"></book-provider>
+        <book-provider :company="{{ $service->company}}" :service="{{$service}}"></book-provider>
         
 
 

@@ -31,6 +31,7 @@ class bookingController extends Controller
 
     public function providerSchedule(Service $service, User $user)
     {
+        
         $day_of_the_week = carbon::parse(request('date'))->format('D');    
         //dd($user->getAppointmentsByDay(request('date')));;    
         //dd($user->getAppointmentsByDay(request('date')));        
